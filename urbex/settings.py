@@ -31,7 +31,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 DEBUG = True
 
 ALLOWED_HOSTS = [
-    'urbex-hidden-treasure-80de41f05cad.herokuapp.com', 'localhost']
+    'urbex-hidden-treasure-80de41f05cad.herokuapp.com', 'localhost', '8000-fabime-urbex-hidden-trea-fdw5hctlyz.us2.codeanyapp.com']
 
 
 # Application definition
@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'cloudinary_storage',
     'django.contrib.staticfiles',
     'cloudinary',
+    'django_summernote',
     'blog',
 ]
 
@@ -77,6 +78,8 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'urbex.wsgi.application'
+
+
 
 
 # Database
