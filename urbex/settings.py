@@ -30,7 +30,8 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['urbex-hidden-treasure.herokuapp.com', 'localhost']
+ALLOWED_HOSTS = [
+    'urbex-hidden-treasure-80de41f05cad.herokuapp.com', 'localhost']
 
 
 # Application definition
