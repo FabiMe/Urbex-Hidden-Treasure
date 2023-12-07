@@ -127,7 +127,7 @@
 
 .custom-form-container {
     text-align: center;
-    background-image: url('https://www.pexels.com/de-de/foto/licht-dunkel-gebaude-industrie-10143298/');
+    background-image: url('/static/images/lostplace.jpg');
     background-size: cover;
     background-position: center;
     padding: 40px;
