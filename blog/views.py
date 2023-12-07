@@ -3,21 +3,21 @@ from django.views import generic, View
 from .models import Post
 
 
-
 class PostList(generic.ListView):
     model = Post
     queryset = Post.objects.filter(status=1).order_by('-created_on')
     template_name = "index.html"
     paginate_by = 6
 
-class PostDetail(View):
 
+class PostDetail(View):
     def get(self, request, slug, *args, **kwargs):
         queryset = Post.objects.filter(status=1)
         post = get_object_or_404(queryset, slug=slug)
-        comment = post.comments.filter(approved=True).order_by('created_on')
-        like = False
-        if post.likes.filter(id=self.request.user.id).exist():
+        comments = post.comments.filter(approved=True).order_by('created_on')
+        liked = False  # Fixed variable name
+
+        if post.likes.filter(id=self.request.user.id).exists():  # Fixed method name
             liked = True
 
         return render(
