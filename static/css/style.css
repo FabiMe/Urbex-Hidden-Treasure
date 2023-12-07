@@ -1,18 +1,20 @@
-body {
+<link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">body {
     background-color: grey;
 }
 
 .brand {
-    font-family: Lato, sans-serif;
-    font-size: 1.4rem;
+    font-family: 'Lato', sans-serif;
+    font-size: 2rem;
     font-weight: 700;
-    color: black;
+    color: #007bff;
+    /* Blue color */
 }
 
 .brand-text {
-    font-family: lato, sans-serif;
-    font-size: 1.2rem;
-    color: darkblue
+    font-family: 'Lato', sans-serif;
+    font-size: 1.5rem;
+    color: #004080;
+    /* Darker blue color */
 }
 
 .light-bg {
@@ -28,8 +30,10 @@ body {
 }
 
 .card {
-    border: none;
-    background-color: transparent;
+    border: 1px solid #ddd;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .image-container {
@@ -39,30 +43,32 @@ body {
 .image-flash {
     position: absolute;
     bottom: 5%;
-    min-width: 30%;
     left: -2px;
     background-color: #23BBBB;
+    padding: 4px;
+    border-radius: 4px;
+    color: #fff;
 }
 
 .author {
-    color: white;
+    color: #fff;
     margin: 4px;
     text-transform: uppercase;
 }
 
 .masthead {
-    margin-top: 10px;
+    margin-top: 20px;
     overflow: hidden;
     position: relative;
-    display: inline-block;
     height: 33vh;
     width: 100%;
 }
 
 .masthead-text {
     background-color: #445261;
-    color: white;
-    position: relative;
+    color: #fff;
+    padding: 20px;
+    border-radius: 8px;
 }
 
 .masthead-image {
@@ -78,63 +84,98 @@ body {
     height: 100%;
     width: 150%;
     background: #445261;
-    -webkit-transform: skew(15deg);
-    -moz-transform: skew(15deg);
     transform: skew(15deg);
     z-index: 100;
 }
 
 .post-link {
     text-decoration: none;
-    color: #445261;
+    color: #007bff;
 }
 
 .post-link:hover,
 .page-link {
-    color: #E84610;
+    color: #004080;
 }
 
 .post-title {
-    margin-top: 20%;
+    margin-top: 10%;
     margin-left: 5%;
+    font-size: 1.8rem;
+    color: #004080;
 }
 
 .post-subtitle {
     margin-left: 5%;
-    color: lightgray;
+    color: #6c757d;
+    /* Gray color */
 }
 
 .btn-signup {
     background-color: #23BBBB;
     color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
 }
 
 .btn-signup:hover,
 .btn-signup:active {
-    background-color: #fff;
-    color: #23BBBB;
+    background-color: #004080;
 }
 
-.link {
-    color: #23BBBB;
-    text-decoration: none;
+.custom-form-container {
+    text-align: center;
+    background-image: url('https://www.pexels.com/de-de/foto/licht-dunkel-gebaude-industrie-10143298/');
+    background-size: cover;
+    background-position: center;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-.link:hover,
-.link:active {
-    color: #445261;
-    text-decoration: underline;
+.custom-form-container h2 {
+    color: #333;
 }
 
-.btn-like {
-    color: #E84610;
+.custom-form-container p {
+    font-size: 16px;
+    color: #666;
+    margin-bottom: 20px;
+}
+
+.custom-form-container input[type="text"],
+.custom-form-container input[type="email"],
+.custom-form-container input[type="password"] {
+    width: 50%;
+    padding: 10px;
+    margin: 10px 0;
+    box-sizing: border-box;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    text-align: center;
+    /* Center the text within the input */
+}
+
+/* Additional styling for the placeholder text */
+.custom-form-container input[type="text"]::placeholder,
+.custom-form-container input[type="email"]::placeholder,
+.custom-form-container input[type="password"]::placeholder {
+    text-align: center;
+    /* Center the placeholder text */
+}
+
+.custom-form-container button {
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px 20px;
     border: none;
-    background: transparent;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 18px;
 }
 
-.btn-like:hover,
-.btn-like:active {
-    color: #E84610;
-    background: transparent;
-    border: none;
+.custom-form-container button:hover {
+    background-color: #0056b3;
 }
