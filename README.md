@@ -279,9 +279,9 @@ Urbex Hidden Treasure is continuously evolving, and additional features may be i
 The structure and some code inspiration for this project were based on the Code Institute Walkthrough Project.
 
 ### Images
-- [Graffiti Pool](https://www.pexels.com/de-de/foto/graffiti-pool-verlassen-urbex-17506281/) by [Photographer Name](https://www.pexels.com/@username)
+- [Graffiti Pool](https://www.pexels.com/de-de/foto/graffiti-pool-verlassen-urbex-17506281/) (https://www.pexels.com/@username)
   - Image sourced from Pexels
 
-- [Dark Industrial Building](https://www.pexels.com/de-de/foto/licht-dunkel-gebaude-industrie-10143298/) by [Photographer Name](https://www.pexels.com/@username)
+- [Dark Industrial Building](https://www.pexels.com/de-de/foto/licht-dunkel-gebaude-industrie-10143298/) (https://www.pexels.com/@username)
   - Image sourced from Pexels
   
