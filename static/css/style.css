@@ -1,181 +1,121 @@
-<link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">body {
-    background-color: grey;
+body {
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
 }
 
-.brand {
+h1,
+h2,
+h3 {
+    font-family: 'Bebas Neue', sans-serif;
+}
+
+p {
     font-family: 'Lato', sans-serif;
-    font-size: 2rem;
-    font-weight: 700;
-    color: #007bff;
-    /* Blue color */
 }
-
-.brand-text {
-    font-family: 'Lato', sans-serif;
-    font-size: 1.5rem;
-    color: #004080;
-    /* Darker blue color */
-}
-
-.light-bg {
-    background-color: #fff;
+.main-bg {
+    background-color: #f8f9fa;
+    /* Light gray background */
 }
 
 .dark-bg {
-    background-color: #445261;
+    background-color: #343a40;
+    /* Dark background for footer */
+    color: #ffffff;
+    /* White text on dark background */
 }
 
-.main-bg {
-    background-color: #F9FAFC;
+.navbar {
+    background-color: #ffffff;
+    /* White background for the navbar */
+}
+
+.brand {
+    color: #21d5e2;
+    /* Blue color for the brand name */
+}
+.container {
+    padding: 20px;
 }
 
 .card {
-    border: 1px solid #ddd;
-    background-color: #fff;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
 }
-
-.image-container {
-    position: relative;
-}
-
-.image-flash {
-    position: absolute;
-    bottom: 5%;
-    left: -2px;
-    background-color: #23BBBB;
-    padding: 4px;
-    border-radius: 4px;
-    color: #fff;
-}
-
-.author {
-    color: #fff;
-    margin: 4px;
-    text-transform: uppercase;
-}
-
-.masthead {
-    margin-top: 20px;
-    overflow: hidden;
-    position: relative;
-    height: 33vh;
-    width: 100%;
-}
-
-.masthead-text {
-    background-color: #445261;
-    color: #fff;
-    padding: 20px;
-    border-radius: 8px;
-}
-
-.masthead-image {
-    position: relative;
-    overflow: hidden;
-}
-
-.masthead-image:after {
-    content: "";
-    position: absolute;
-    top: 0;
-    right: 90%;
-    height: 100%;
-    width: 150%;
-    background: #445261;
-    transform: skew(15deg);
-    z-index: 100;
-}
-
-.post-link {
-    text-decoration: none;
-    color: #007bff;
-}
-
-.post-link:hover,
-.page-link {
-    color: #004080;
-}
-
-.post-title {
-    margin-top: 10%;
-    margin-left: 5%;
-    font-size: 1.8rem;
-    color: #004080;
-}
-
-.post-subtitle {
-    margin-left: 5%;
-    color: #6c757d;
-    /* Gray color */
+.btn-like {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
 }
 
 .btn-signup {
-    background-color: #23BBBB;
-    color: #fff;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
+    background-color: #21d5e2;
+    color: #ffffff;
+}
+.navbar {
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    /* Add a subtle shadow */
 }
 
-.btn-signup:hover,
-.btn-signup:active {
-    background-color: #004080;
+.navbar-brand {
+    font-size: 1.5rem;
+    /* Adjust the font size of the brand */
 }
 
-.custom-form-container {
+.navbar-text {
+    color: #6c757d;
+    /* Subtle color for the additional text */
+}
+.alert {
+    border-radius: 0;
+    /* Remove border radius for a modern look */
+}
+.footer {
     text-align: center;
-    background-image: url('/static/images/lostplace.jpg');
-    background-size: cover;
-    background-position: center;
-    padding: 40px;
-    border-radius: 10px;
+}
+.custom-form-container {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #ffffff;
+    border: 1px solid #e1e1e1;
+    border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    /* Center text and form field */
 }
 
-.custom-form-container h2 {
-    color: #333;
+.custom-form-container h1 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #21d5e2;
 }
 
 .custom-form-container p {
-    font-size: 16px;
-    color: #666;
     margin-bottom: 20px;
+    font-size: 16px;
 }
 
-.custom-form-container input[type="text"],
-.custom-form-container input[type="email"],
-.custom-form-container input[type="password"] {
-    width: 50%;
-    padding: 10px;
-    margin: 10px 0;
-    box-sizing: border-box;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    text-align: center;
-    /* Center the text within the input */
+/* Style the form fields */
+.custom-form-container input[type="hidden"] {
+    display: none;
+    /* Hide hidden fields */
 }
 
-/* Additional styling for the placeholder text */
-.custom-form-container input[type="text"]::placeholder,
-.custom-form-container input[type="email"]::placeholder,
-.custom-form-container input[type="password"]::placeholder {
-    text-align: center;
-    /* Center the placeholder text */
-}
-
-.custom-form-container button {
-    background-color: #007bff;
-    color: #fff;
-    padding: 10px 20px;
+.custom-form-container input[type="submit"] {
+    background-color: #21d5e2;
+    color: #ffffff;
+    padding: 10px 15px;
     border: none;
-    border-radius: 5px;
+    border-radius: 4px;
     cursor: pointer;
-    font-size: 18px;
+    font-size: 16px;
+    width: 100%;
+    /* Make the submit button full width */
 }
 
-.custom-form-container button:hover {
-    background-color: #0056b3;
+/* Responsive styles */
+@media (max-width: 768px) {
+    .custom-form-container {
+        width: 100%;
+        padding: 15px;
+    }
 }

@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="custom-form-container">
+    <h2>Edit Your Profile</h2>
+    <form method="post" action="{% url 'account_edit_profile' %}">
+        {% csrf_token %}
+
+        {{ form.non_field_errors }}
+
+        <!-- Individual form fields with placeholders -->
+        <div class="mb-3">
+            {{ form.first_name.errors }}
+            <label for="{{ form.first_name.id_for_label }}">First Name:</label>
+            <input type="text" name="{{ form.first_name.name }}" id="{{ form.first_name.id_for_label }}"
+                value="{{ form.initial.first_name|default:'' }}" placeholder="{{ form.initial.first_name|default:'' }}">
+        </div>
+
+        <div class="mb-3">
+            {{ form.last_name.errors }}
+            <label for="{{ form.last_name.id_for_label }}">Last Name:</label>
+            <input type="text" name="{{ form.last_name.name }}" id="{{ form.last_name.id_for_label }}"
+                value="{{ form.initial.last_name|default:'' }}" placeholder="{{ form.initial.last_name|default:'' }}">
+        </div>
+
+        <div class="mb-3">
+            {{ form.email.errors }}
+            <label for="{{ form.email.id_for_label }}">Email:</label>
+            <input type="text" name="{{ form.email.name }}" id="{{ form.email.id_for_label }}"
+                value="{{ form.initial.email|default:'' }}"
+                placeholder="{{ form.initial.email|default:'No email address submitted' }}">
+        </div>
+
+        <!-- Add any additional fields you want to include -->
+
+        <button type="submit">Save Changes</button>
+    </form>
+    <p><a href="{% url 'account_change_password' %}">Change Password</a></p>
+</div>
+{% endblock %}
