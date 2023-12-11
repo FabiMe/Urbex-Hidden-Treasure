@@ -36,6 +36,9 @@
     - [Contribution Tracking](#contribution-tracking)
     - [Success Criteria Tracking](#success-criteria-tracking)
   - [Fixed Bugs](#fixed-bugs)
+  - [Credits](#credits)
+    - [Code](#code)
+    - [Images](#images)
 
 ## Project Title
 Urbex Hidden Treasure
@@ -268,3 +271,17 @@ Urbex Hidden Treasure is continuously evolving, and additional features may be i
      - [ ] Distorted UI elements, making it difficult to read content.
    - [ ] **Fix:**
      - [ ] Adjusted CSS styles to improve responsiveness on smaller screens.
+
+
+## Credits 
+
+### Code
+The structure and some code inspiration for this project were based on the Code Institute Walkthrough Project.
+
+### Images
+- [Graffiti Pool](https://www.pexels.com/de-de/foto/graffiti-pool-verlassen-urbex-17506281/) by [Photographer Name](https://www.pexels.com/@username)
+  - Image sourced from Pexels
+
+- [Dark Industrial Building](https://www.pexels.com/de-de/foto/licht-dunkel-gebaude-industrie-10143298/) by [Photographer Name](https://www.pexels.com/@username)
+  - Image sourced from Pexels
+  
