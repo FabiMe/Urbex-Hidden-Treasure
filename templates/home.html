@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container text-center mt-5">
+    <h1 class="mb-4">Embark on a Journey Through the Unseen: Explore Abandoned Marvels and Hidden Urban Treasures with Urbex - The Hidden Gem.<br>Your Adventure into the Forgotten Corners of the City Begins Here.</h1>
+    <h3 class="mb-4">Join the Urbex Community: Register Now!<br>Sign up today and unlock full access to exclusive blog posts filled with unique urban explorations. Discover stories hidden within the city’s forgotten landscapes and be part of a community that cherishes the thrill of discovery.</h3>
+
+    <div class="row justify-content-center">
+        <div class="col-md-4 mb-2">
+            <a href="{% url 'account_login' %}" class="btn btn-primary btn-lg">Sign In</a>
+        </div>
+        <div class="col-md-4 mb-2">
+            <a href="{% url 'blog_overview' %}" class="btn btn-secondary btn-lg">Enter the Blog Overview</a>
+        </div>
+    </div>
+</div>
+{% endblock %}

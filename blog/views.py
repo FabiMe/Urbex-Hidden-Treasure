@@ -1,6 +1,7 @@
 from django.utils.decorators import method_decorator
 from django.contrib.auth.decorators import login_required
 from django.views import generic, View
+from django.views.generic import ListView
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
@@ -15,7 +16,7 @@ from .models import Post
 class PostList(generic.ListView):
     model = Post
     queryset = Post.objects.filter(status=1).order_by("-created_on")
-    template_name = "index.html"
+    template_name = "home.html"
     paginate_by = 6
 
 
@@ -179,3 +180,10 @@ class PostCreateView(LoginRequiredMixin, View):
             messages.success(request, 'Blog post created successfully!')
             return redirect('home')
         return render(request, self.template_name, {'form': form})
+
+
+class PostListView(ListView):
+    model = Post
+    template_name = 'index.html'
+    context_object_name = 'posts'
+    paginate_by = 6  # Optional: if you want pagination
