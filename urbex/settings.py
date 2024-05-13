@@ -30,12 +30,12 @@ TEMPLATES_DIR = os.path.join(BASE_DIR, 'templates')
 SECRET_KEY = os.environ.get('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 X_FRAME_OPTIONS = 'SAMEORIGIN'
 
 ALLOWED_HOSTS = [
-    'urbex-hidden-treasure-80de41f05cad.herokuapp.com', 'localhost', '8000-fabime-urbex-hidden-trea-fdw5hctlyz.us2.codeanyapp.com']
+    'urbex-hidden-treasure-80de41f05cad.herokuapp.com', 'localhost', '8000-fabime-urbexhiddentreas-8r4208f86yz.ws-eu111.gitpod.io']
 
 
 # Application definition

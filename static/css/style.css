@@ -1,45 +1,70 @@
+/* Base Styles */
 body {
     font-family: 'Roboto', sans-serif;
     font-size: 16px;
 }
 
-h1,
-h2,
-h3 {
+h1, h2, h3 {
     font-family: 'Bebas Neue', sans-serif;
 }
 
 p {
     font-family: 'Lato', sans-serif;
 }
+
+/* Backgrounds */
 .main-bg {
-    background-color: #f8f9fa;
-    /* Light gray background */
+    background-color: #f8f9fa; /* Light gray background */
 }
 
 .dark-bg {
-    background-color: #343a40;
-    /* Dark background for footer */
-    color: #ffffff;
-    /* White text on dark background */
+    background-color: #343a40; /* Dark background for footer */
+    color: #ffffff; /* White text on dark background */
 }
 
-.navbar {
-    background-color: #ffffff;
-    /* White background for the navbar */
+/* Navbar */
+.custom-navbar {
+    background-color: black;
 }
 
-.brand {
-    color: #21d5e2;
-    /* Blue color for the brand name */
-}
-.container {
-    padding: 20px;
+.navbar-brand .brand, .navbar-brand .brand-text {
+    color: #21d5e2; /* Blue color for the brand name and text */
 }
 
+.nav-link {
+    color: white; /* White navigation links color */
+    margin-right: 30px; /* Increased spacing between nav items */
+}
+
+.navbar-toggler {
+    border-color: #21d5e2; /* Toggler icon color */
+}
+
+.account-icon i {
+    border: 2px solid #21d5e2; /* Circle around the account icon */
+    padding: 5px;
+    border-radius: 50%;
+    color: white;
+}
+
+.dropdown-item {
+    color: white;
+}
+
+.dropdown-menu {
+    background-color: black; /* Dropdown menu background */
+    color: white; /* Dropdown text color */
+}
+
+.dropdown-item:hover {
+    background-color: #333333; /* Dropdown item hover state */
+}
+
+/* Cards and Buttons */
 .card {
     margin-bottom: 20px;
 }
+
 .btn-like {
     background-color: transparent;
     border: none;
@@ -50,37 +75,17 @@ p {
     background-color: #21d5e2;
     color: #ffffff;
 }
-.navbar {
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-    /* Add a subtle shadow */
-}
 
-.navbar-brand {
-    font-size: 1.5rem;
-    /* Adjust the font size of the brand */
-}
-
-.navbar-text {
-    color: #6c757d;
-    /* Subtle color for the additional text */
-}
+/* Alerts and Forms */
 .alert {
-    border-radius: 0;
-    /* Remove border radius for a modern look */
+    border-radius: 0; /* Remove border radius for a modern look */
 }
-.footer {
-    text-align: center;
-}
+
 .custom-form-container {
     max-width: 400px;
     margin: 0 auto;
     padding: 20px;
-    background-color: #ffffff;
-    border: 1px solid #e1e1e1;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    text-align: center;
-    /* Center text and form field */
+    text-align: center; /* Center text and form fields */
 }
 
 .custom-form-container h1 {
@@ -94,10 +99,8 @@ p {
     font-size: 16px;
 }
 
-/* Style the form fields */
 .custom-form-container input[type="hidden"] {
-    display: none;
-    /* Hide hidden fields */
+    display: none; /* Hide hidden fields */
 }
 
 .custom-form-container input[type="submit"] {
@@ -108,14 +111,120 @@ p {
     border-radius: 4px;
     cursor: pointer;
     font-size: 16px;
-    width: 100%;
-    /* Make the submit button full width */
+    width: 100%; /* Make the submit button full width */
 }
 
-/* Responsive styles */
+/* Allauth styles */
+.login-container, .signup-container {
+    max-width: 500px;
+    margin: auto;
+    padding: 20px;
+    background-color: #fff; /* Ensures the background is white */
+    border: 2px solid #8a8989; /* Solid blue border as an outline */
+    border-radius: 8px; /* Rounded corners for a smooth look */
+    box-shadow: none; /* No shadow for a flat design */
+}
+
+.login-title, .signup-title {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.login-instruction, .signup-instruction, .login-form, .signup-form {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.field-container {
+    margin-bottom: 15px;
+    width: 100%;
+}
+
+.field-input input, .field-input select, .field-input textarea, .field-label {
+    width: 100%; /* Full width to maintain clean alignment */
+    padding: 8px; /* Adequate padding for better text visibility */
+    box-sizing: border-box; /* Ensures padding does not affect width */
+}
+
+.forgot-password-link, .signup-link, .login-link {
+    display: block; /* Ensures links appear on their own line */
+    margin-top: 5px;
+    color: #007bff;
+    text-decoration: none;
+}
+
+.forgot-password-link:hover, .signup-link:hover, .login-link:hover {
+    text-decoration: underline;
+}
+
+.login-button, .signup-button {
+    width: 100%;
+    padding: 10px;
+    background-color: #007bff; /* Primary button color */
+    border: none;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.login-button:hover, .signup-button:hover {
+    background-color: #0056b3; /* Darker blue on hover for visual feedback */
+}
+
+/* Create Blog_post style */
+.form-container {
+    max-width: 500px;
+    margin: auto;
+    padding: 20px;
+    background-color: #fff;
+    border: 2px solid #8a8989;
+    border-radius: 8px;
+    box-shadow: none;
+}
+
+.form-title {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.form-fields {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.field-container {
+    margin-bottom: 15px;
+    width: 100%;
+}
+
+.field-input input, .field-input select, .field-input textarea, .field-label {
+    width: 100%;
+    padding: 8px;
+    box-sizing: border-box;
+}
+
+.btn.btn-primary.form-button {
+    width: 100%;
+    padding: 10px;
+    background-color: #007bff;
+    border: none;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.btn.btn-primary.form-button:hover {
+    background-color: #0056b3;
+}
+
+/* Responsive Styles */
 @media (max-width: 768px) {
     .custom-form-container {
         width: 100%;
         padding: 15px;
     }
+}
+
+.footer {
+    text-align: center;
 }

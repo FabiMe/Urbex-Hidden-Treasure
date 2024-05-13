@@ -7,7 +7,8 @@ from django.contrib.auth import authenticate, login, logout
 from django.urls import reverse
 from django.http import HttpResponseRedirect
 from django.contrib.auth.models import User
-from .forms import SignUpForm, EditProfileForm, LoginForm, CommentForm
+from django.contrib.auth.mixins import LoginRequiredMixin
+from .forms import SignUpForm, EditProfileForm, LoginForm, CommentForm, PostForm
 from .models import Post
 
 
@@ -19,7 +20,6 @@ class PostList(generic.ListView):
 
 
 class PostDetail(View):
-
     def get(self, request, slug, *args, **kwargs):
         queryset = Post.objects.filter(status=1)
         post = get_object_or_404(queryset, slug=slug)
@@ -73,8 +73,8 @@ class PostDetail(View):
             },
         )
 
+
 class PostLike(View):
-    
     def post(self, request, slug, *args, **kwargs):
         post = get_object_or_404(Post, slug=slug)
         if post.likes.filter(id=request.user.id).exists():
@@ -83,6 +83,7 @@ class PostLike(View):
             post.likes.add(request.user)
 
         return HttpResponseRedirect(reverse('post_detail', args=[slug]))
+
 
 class SignUpView(View):
     def get(self, request, *args, **kwargs):
@@ -117,16 +118,19 @@ class LoginView(View):
                 messages.error(request, 'Invalid username or password.')
         return render(request, 'registration/login.html', {'form': form})
 
+
 class LogoutView(View):
     def get(self, request, *args, **kwargs):
         logout(request)
         messages.success(request, 'Logout successful.')
         return redirect('home')
 
+
 @method_decorator(login_required, name='dispatch')
 class ProfileView(View):
     def get(self, request, *args, **kwargs):
         return render(request, 'registration/profile.html', {'user': request.user})
+
 
 @method_decorator(login_required, name='dispatch')
 class EditProfileView(View):
@@ -142,6 +146,7 @@ class EditProfileView(View):
             return redirect('account_profile')
         return render(request, 'registration/edit_profile.html', {'form': form})
 
+
 @method_decorator(login_required, name='dispatch')
 class DeleteAccountView(View):
     def get(self, request, *args, **kwargs):
@@ -153,3 +158,24 @@ class DeleteAccountView(View):
         user.delete()
         messages.success(request, 'Account deleted successfully.')
         return redirect('home')
+
+
+class PostCreateView(LoginRequiredMixin, View):
+    form_class = PostForm
+    template_name = 'post_create.html'
+    login_url = '/login/'  # Redirect to login page if not logged in
+
+    def get(self, request, *args, **kwargs):
+        form = self.form_class()
+        return render(request, self.template_name, {'form': form})
+
+    def post(self, request, *args, **kwargs):
+        form = self.form_class(request.POST, request.FILES)
+        if form.is_valid():
+            new_post = form.save(commit=False)
+            new_post.author = request.user  # Set the author to the current user
+            new_post.status = 1  # Assuming you want to publish it immediately
+            new_post.save()
+            messages.success(request, 'Blog post created successfully!')
+            return redirect('home')
+        return render(request, self.template_name, {'form': form})

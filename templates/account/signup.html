@@ -1,35 +1,43 @@
 {% extends "base.html" %}
-{% load allauth i18n socialaccount %}
+{% load i18n %}
+{% load static %}
+{% load allauth account socialaccount %}
+
 {% block head_title %}
     {% trans "Signup" %}
 {% endblock head_title %}
+
 {% block content %}
-    {% element h1 %}
-        {% trans "Sign Up" %}
-    {% endelement %}
-    <p>
-        {% blocktrans %}Already have an account? Then please <a href="{{ login_url }}">sign in</a>.{% endblocktrans %}
+<div class="signup-container">
+    <h1 class="signup-title">{% trans "Sign Up" %}</h1>
+    <p class="signup-instruction">
+        {% blocktrans %}Already have an account? Then please <a href="{{ login_url }}" class="login-link">sign in</a>.{% endblocktrans %}
     </p>
-    {% url 'account_signup' as action_url %}
-   {% element form form=form method="post" action=action_url tags="entrance,signup" %}
-    {% slot body %}
-        <div class="custom-form-container">
-            {% csrf_token %}
-            {% element fields form=form unlabeled=True %}
-            {% if redirect_field_value %}
-                <input type="hidden"
-                       name="{{ redirect_field_name }}"
-                       value="{{ redirect_field_value }}" />
-            {% endif %}
+    <form method="post" action="{% url 'account_signup' %}" class="signup-form">
+        {% csrf_token %}
+        <div class="form-fields">
+            {% for field in form %}
+            <div class="field-container">
+                <div class="field-label">
+                    {{ field.label_tag }}
+                </div>
+                <div class="field-input">
+                    {{ field }}
+                    {% if field.help_text %}
+                    <small class="form-text text-muted">{{ field.help_text }}</small>
+                    {% endif %}
+                    {% if field.errors %}
+                    <div class="alert alert-danger">{{ field.errors }}</div>
+                    {% endif %}
+                </div>
+            </div>
+            {% endfor %}
         </div>
-    {% endelement %}
-    {% endslot %}
-   
-    {% slot actions %}
-        {% element button tags="prominent,signup" type="submit" %}
-            {% trans "Sign Up" %}
-        {% endelement %}
-    {% endslot %}
-{% endelement %}
+        {% if redirect_field_value %}
+        <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}">
+        {% endif %}
+        <button type="submit" class="btn btn-primary signup-button">{% trans "Sign Up" %}</button>
+    </form>
     {% include "socialaccount/snippets/login.html" with page_layout="entrance" %}
+</div>
 {% endblock content %}
