@@ -3,12 +3,13 @@
 {% load crispy_forms_tags %}
 
 {% block content %}
-<!-- Container for the blog entries -->
 <div class="container-fluid">
     <div class="row">
+        <!-- Optional: Div for map -->
+        <div class="col-12" id="map" style="height: 300px;"></div>
 
         <!-- Blog Entries Column -->
-        <div class="col-12 mt-3 left">
+        <div class="col-12 mt-3">
             <!-- Button to create a new blog post, visible only to logged-in users -->
             {% if user.is_authenticated %}
             <div class="mb-3">
@@ -16,7 +17,7 @@
             </div>
             {% endif %}
             <div class="row">
-                {% for post in post_list %}
+                {% for post in posts %}
                 <!-- Individual blog post card -->
                 <div class="col-md-4">
                     <div class="card mb-4">
@@ -25,8 +26,7 @@
                             <div class="image-container">
                                 {% if "placeholder" in post.featured_image.url %}
                                 <!-- Default image if placeholder is detected -->
-                                <img class="card-img-top"
-                                    src="https://codeinstitute.s3.amazonaws.com/fullstack/blog/default.jpg">
+                                <img class="card-img-top" src="https://codeinstitute.s3.amazonaws.com/fullstack/blog/default.jpg">
                                 {% else %}
                                 <!-- Actual featured image of the post -->
                                 <img class="card-img-top" src="{{ post.featured_image.url }}">
@@ -37,14 +37,19 @@
                                 </div>
                             </div>
                             <!-- Link to the detailed post page -->
-                            <a href="{% url 'post_detail' post.slug  %}" class="post-link">
+                            {% if post.slug %}
+                            <a href="{% url 'post_detail' post.slug %}" class="post-link">
                                 <h2 class="card-title">{{ post.title }}</h2>
                                 <p class="card-text">{{ post.excerpt }}</p>
                             </a>
+                            {% else %}
+                            <h2 class="card-title">{{ post.title }}</h2>
+                            <p class="card-text">{{ post.excerpt }}</p>
+                            <p class="text-danger">No valid slug for this post.</p>
+                            {% endif %}
                             <hr />
                             <!-- Metadata for the post -->
-                            <p class="card-text text-muted h6">{{ post.created_on }} <i class="far fa-heart"></i>
-                                {{ post.number_of_likes }}</p>
+                            <p class="card-text text-muted h6">{{ post.created_on }} <i class="far fa-heart"></i> {{ post.number_of_likes }}</p>
                         </div>
                     </div>
                 </div>
@@ -53,7 +58,7 @@
             </div>
             <div class="row">
                 {% endif %}
-                {% endfor %}
+            {% endfor %}
 
             </div>
         </div>

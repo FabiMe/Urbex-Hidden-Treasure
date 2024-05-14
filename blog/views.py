@@ -26,8 +26,11 @@ class PostDetail(View):
         post = get_object_or_404(queryset, slug=slug)
         comments = post.comments.filter(approved=True).order_by("-created_on")
         liked = False
-        if post.likes.filter(id=self.request.user.id).exists():
+        if post.likes.filter(id=request.user.id).exists():
             liked = True
+
+        # Check if latitude and longitude are provided
+        show_map = post.latitude is not None and post.longitude is not None
 
         return render(
             request,
@@ -37,30 +40,31 @@ class PostDetail(View):
                 "comments": comments,
                 "commented": False,
                 "liked": liked,
-                "comment_form": CommentForm()
+                "comment_form": CommentForm(),
+                "show_map": show_map  # Pass this to control map display in template
             },
         )
-    
-    
+
     def post(self, request, slug, *args, **kwargs):
         queryset = Post.objects.filter(status=1)
         post = get_object_or_404(queryset, slug=slug)
         comments = post.comments.filter(approved=True).order_by("-created_on")
         liked = False
 
-        if post.likes.filter(id=self.request.user.id).exists():
+        if post.likes.filter(id=request.user.id).exists():
             liked = True
 
         comment_form = CommentForm(data=request.POST)
-
         if comment_form.is_valid():
             comment_form.instance.email = request.user.email
             comment_form.instance.name = request.user.username
             comment = comment_form.save(commit=False)
             comment.post = post
             comment.save()
-
             messages.success(request, 'Your comment was submitted successfully!')
+            return redirect('post_detail', slug=post.slug)
+        else:
+            messages.error(request, 'There was an error with your comment.')
 
         return render(
             request,
@@ -69,8 +73,9 @@ class PostDetail(View):
                 "post": post,
                 "comments": comments,
                 "commented": True,
-                "comment_form": CommentForm(),
-                "liked": liked
+                "comment_form": comment_form,  # Re-render the form with errors shown
+                "liked": liked,
+                "show_map": post.latitude is not None and post.longitude is not None
             },
         )
 
@@ -102,10 +107,17 @@ class SignUpView(View):
 
 class LoginView(View):
     def get(self, request, *args, **kwargs):
+        if request.user.is_authenticated:
+            messages.warning(request, 'You are already logged in.')
+            return redirect('home')
         form = LoginForm()
         return render(request, 'registration/login.html', {'form': form})
 
     def post(self, request, *args, **kwargs):
+        if request.user.is_authenticated:
+            messages.warning(request, 'You are already logged in.')
+            return redirect('home')
+
         form = LoginForm(request.POST)
         if form.is_valid():
             username = form.cleaned_data['username']
@@ -185,5 +197,5 @@ class PostCreateView(LoginRequiredMixin, View):
 class PostListView(ListView):
     model = Post
     template_name = 'index.html'
-    context_object_name = 'posts'
-    paginate_by = 6  # Optional: if you want pagination
+    context_object_name = 'posts' 
+    paginate_by = 6

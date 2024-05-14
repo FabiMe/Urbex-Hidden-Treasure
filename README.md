@@ -285,3 +285,6 @@ The structure and some code inspiration for this project were based on the Code 
 - [Dark Industrial Building](https://www.pexels.com/de-de/foto/licht-dunkel-gebaude-industrie-10143298/) (https://www.pexels.com/@username)
   - Image sourced from Pexels
   
+  https://pixabay.com/photos/atom-nuclear-power-plant-abandoned-3669818/
+  https://pixabay.com/photos/urban-urbex-lostplace-abandoned-628276/
+  https://pixabay.com/photos/skating-disaster-factory-leave-3995560/
