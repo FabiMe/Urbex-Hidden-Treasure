@@ -22,10 +22,10 @@
                     </div>
                     <!-- Post location map -->
                     {% if post.latitude and post.longitude %}
-                    <div id="map" style="height: 400px;" class="mt-4"></div>
+                    <div id="post-map" style="height: 400px;" class="mt-4"></div>
                     <script>
                         document.addEventListener("DOMContentLoaded", function() {
-                            var map = L.map('map').setView([{{ post.latitude }}, {{ post.longitude }}], 13);
+                            var map = L.map('post-map').setView([{{ post.latitude }}, {{ post.longitude }}], 13);
 
                             L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
                                 maxZoom: 19,
@@ -75,4 +75,9 @@
         </div>
     </div>
 </div>
+
+<!-- Leaflet CSS and JavaScript included in the base template -->
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+<script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+
 {% endblock %}

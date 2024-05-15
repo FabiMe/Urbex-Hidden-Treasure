@@ -187,7 +187,7 @@ class PostCreateView(LoginRequiredMixin, View):
         if form.is_valid():
             new_post = form.save(commit=False)
             new_post.author = request.user  # Set the author to the current user
-            new_post.status = 1  # Assuming you want to publish it immediately
+            new_post.status = 1  
             new_post.save()
             messages.success(request, 'Blog post created successfully!')
             return redirect('home')
@@ -199,3 +199,8 @@ class PostListView(ListView):
     template_name = 'index.html'
     context_object_name = 'posts' 
     paginate_by = 6
+
+class MapView(View):
+    def get(self, request, *args, **kwargs):
+        posts = Post.objects.exclude(latitude__isnull=True).exclude(longitude__isnull=True)
+        return render(request, 'map.html', {'posts': posts})

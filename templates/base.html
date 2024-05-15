@@ -1,4 +1,3 @@
-
 {% load static %}
 {% load crispy_forms_tags %}
 
@@ -25,17 +24,19 @@
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous">
-        </script>
-
-    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    </script>
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" integrity="sha384-xodZBNTC5n+IiCOvLCeXitxLmtph/EN5TKEuSiwAgjXUkw5V8zZOg1TB9PlRxCkk" crossorigin=""/>
+    <!-- Leaflet JavaScript -->
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js" integrity="sha384-Rw5Lsq9n8sK9tNEDXKz5+2rPt0gS26XZKc6EmsjIn8YcB+q6UK5Fpl8A8LMLGxEy" crossorigin=""></script>
 </head>
 
 <body class="d-flex flex-column h-100 main-bg">
     <nav class="navbar navbar-expand-lg custom-navbar">
         <div class="container-fluid">
             <a class="navbar-brand" href="{% url 'home' %}">
-                <span class="brand">Urbex</span>
-                <span class="brand-text">Hidden Treasure</span>
+                <span class="brand">Urbex&nbsp;</span>
+                <span class="brand-text">HiddenTreasure</span>
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -49,7 +50,7 @@
                         <a class="nav-link" href="{% url 'blog_overview' %}">Blog</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Map</a>
+                        <a class="nav-link" href="{% url 'map' %}">Map</a>
                     </li>
                 </ul>
                 <ul class="navbar-nav">
@@ -94,8 +95,36 @@
     </main>
 
     <!-- Footer -->
-    <footer class="footer mt-auto py-3 dark-bg">
-        <!-- Footer text with -->
-
-<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <footer class="footer mt-auto py-3 dark-bg text-white">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <h6>Follow Us</h6>
+                    <div class="social-icons d-flex">
+                        <a href="https://www.facebook.com" class="text-white me-3" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://www.twitter.com" class="text-white me-3" target="_blank"><i class="fab fa-twitter"></i></a>
+                        <a href="https://www.instagram.com" class="text-white me-3" target="_blank"><i class="fab fa-instagram"></i></a>
+                        <a href="https://www.linkedin.com" class="text-white me-3" target="_blank"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <h6>Disclaimer</h6>
+                    <p class="small">This website is for informational purposes only. All urban exploration activities are conducted at your own risk. Always prioritize safety and obtain permission where required.</p>
+                </div>
+                <div class="col-md-4">
+                    <h6>Impressum</h6>
+                    <p class="small">Urbex Hidden Treasure<br>
+                    Street Address<br>
+                    City, State, ZIP Code<br>
+                    Email: contact@urbexhidden.com</p>
+                </div>
+            </div>
+            <div class="row mt-3">
+                <div class="col text-center">
+                    <p class="small">&copy; 2024 Urbex Hidden Treasure. All rights reserved.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
 </body>
+</html>
