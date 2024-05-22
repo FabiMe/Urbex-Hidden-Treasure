@@ -36,6 +36,7 @@
    - [Browser Compatibility Testing](#browser-compatibility-testing)
    - [List of Fixed Bugs](#list-of-fixed-bugs)
    - [List of Unfixed Bugs](#list-of-unfixed-bugs)
+   - [Manual Testing](#manual-testing)
 7. [Deployment](#deployment)
    - [Development Environment Setup](#development-environment-setup)
    - [Deployment to Production](#deployment-to-production)
@@ -55,7 +56,16 @@ This project aims to create a vibrant, interactive community around urban explor
 The development of Urbex Hidden Treasure adopted an Agile approach, prioritizing user feedback and iterative updates to ensure the platform evolves in alignment with user needs and expectations. Regular sprint reviews and planning sessions were integral to this process, helping to refine features and functionality continuously.
 
 ### Wireframes
-Initial design concepts were visualized through wireframes, which provided a schematic representation of the user interface and experience. These wireframes served as a foundational blueprint for the development team and were refined over multiple iterations based on stakeholder feedback. [Link to wireframes]
+Initial design concepts were visualized through wireframes, which provided a schematic representation of the user interface and experience. These wireframes served as a foundational blueprint for the development team and were refined over multiple iterations based on stakeholder feedback. During the development process, some elements were adjusted for practicality and completeness, resulting in a final product that may look different from the initial wireframes.
+
+![landingpage_wireframe](https://github.com/FabiMe/Urbex-Hidden-Treasure/assets/136444209/5c45244a-6980-43d2-a671-09657456d5ce)
+
+![sign_up_wireframe](https://github.com/FabiMe/Urbex-Hidden-Treasure/assets/136444209/9c664ff2-bf96-4b6d-84d5-c69297015d82)
+
+![blog_detail_wireframe ](https://github.com/FabiMe/Urbex-Hidden-Treasure/assets/136444209/ec2cffb4-9707-48f3-8b48-af4eb87f5b23)
+
+![blog_overview_wireframe](https://github.com/FabiMe/Urbex-Hidden-Treasure/assets/136444209/84b21cad-874d-4e38-bc14-b110a4e9f87d)
+
 
 ### Site Goals
 The primary objectives of Urbex Hidden Treasure are to:
@@ -80,16 +90,13 @@ The platform utilizes a sleek, modern design with a minimalist color palette to 
 Provides a dynamically updated list of blog posts, prominently displayed on the homepage. Each post includes a teaser excerpt, a visually striking featured image, and a link to the full article. Posts are sorted by their publication date, with the most recent posts appearing first.
 
 #### Detailed Blog View
-Each blog post can be accessed in full detail, displaying all content, including multimedia elements like images and videos. Users can interact with posts through likes and comments. Posts with geographical tags show an embedded map view that pinpoints the location discussed.
+Each blog post can be accessed in full detail, displaying all content, including multimedia elements like images. Users can interact with posts through comments. Posts with geographical tags show an embedded map view that pinpoints the location discussed.
 
 #### User Authentication
-The site supports comprehensive user authentication mechanisms. Users can sign up, log in, and log out. Authentication is managed through Django's built-in user management system, ensuring security and data integrity.
+The site supports comprehensive user authentication mechanisms. Users can sign up, log in, and log out. Authentication is managed through Django Allauth, ensuring security and data integrity.
 
 #### Commenting System
-A fully integrated commenting system allows registered users to post comments on articles. Comments can be moderated by administrators to maintain quality and relevance.
-
-#### Like Feature
-Users can express appreciation for content through a like system, which is tallied and displayed on each post. This system enhances user engagement and provides feedback to content creators.
+A fully integrated commenting system allows registered users to post comments on articles. Comments can be moderated by administrators to maintain quality and relevance. Comments must be approved by an admin before they are displayed on the page.
 
 #### Profile Management
 Users have the ability to view and edit their profiles, enhancing the personalization of the user experience. Profile management also includes the option to delete accounts, ensuring users have control over their data.
@@ -113,7 +120,6 @@ The project uses several Django models to manage its data:
 
 ### Custom Model Features
 Custom model methods include:
-- `number_of_likes()`: Returns the count of likes for each post, allowing for dynamic display in templates.
 - Auto-generated slugs for posts: Ensures URLs are readable and SEO-friendly.
 
 ### CRUD Operations
@@ -140,34 +146,103 @@ External libraries enhance functionality and user experience:
 - **Bootstrap:** Used for responsive design and modern UI components.
 
 ### Database Technologies
-PostgreSQL is used as the primary database, offering advanced features and reliability for storing complex relational data.
+Cloudinary is used as the primary database, offering advanced features and reliability for storing complex relational data.
+
 
 ## Testing
 ### Test Guide
 Instructions on running automated tests to ensure application stability and performance. Tests cover model validation, view functionality, and user interaction flows.
 
 ### Validator Testing
-HTML and CSS code passes W3C validation without errors, ensuring standards compliance and browser compatibility.
+
+Code is validated using tools like Flake8 and Pylint to ensure adherence to coding standards.
 
 ### Browser Compatibility Testing
-The site is tested across modern browsers including Google Chrome, Mozilla Firefox, and Safari, with adjustments made to ensure consistent behavior and appearance.
+
+The application is tested across multiple browsers, including Chrome, Firefox, and Safari, to ensure compatibility.
 
 ### List of Fixed Bugs
-- **Map Loading Issue:** Fixed a bug where the map would not load correctly on initial page visits by ensuring asynchronous loading and proper initialization in JavaScript.
+
+- Fixed issue with map markers not displaying correctly on certain browsers.
+- Resolved a bug where users couldn't delete their comments.
 
 ### List of Unfixed Bugs
-- **Delayed Comment Display:** Occasionally, comments may not appear immediately due to caching issues. Work is ongoing to address this in future updates.
 
-## Deployment
-### Development Environment Setup
-Detailed steps to set up a local development environment, including cloning the GitHub repository, setting up a virtual environment, installing dependencies, and running the Django development server.
+- Occasional slow loading times on the map view due to large datasets.
 
-### Deployment to Production
-Comprehensive instructions for deploying the application to Heroku, including setting environment variables, configuring Django settings for production, and using Heroku's Git-based deployment workflow.
+### Manual Testing
 
-## Source Credits
-### References/Documentation/Tutorials
-A list of key resources, documentation, and tutorials that provided guidance and code snippets during the development process.
+The following table lists the features that require manual testing, along with the test cases and expected outcomes:
 
-### Media and Styling Credits
-Credits for images, icons, and other media used in the project, sourced from various free and paid resources.
+| Feature                | Test Case                                               | Expected Outcome                                               |
+|------------------------|---------------------------------------------------------|----------------------------------------------------------------|
+| Blog Post Listing      | Navigate to the blog overview page                      | List of blog posts displayed with title, excerpt, author, date |
+| Detailed Blog View     | Click on a blog post title                              | Detailed view of the blog post with full content and comments   |
+| User Authentication    | Sign up with a new email                                | Account created and user logged in                             |
+|                        | Log in with existing credentials                        | User logged in successfully                                    |
+|                        | Log out                                                 | User logged out and redirected to home page                    |
+| Commenting System      | Post a comment on a blog post                           | Comment appears below the post                                 |
+|                        | Edit an existing comment                                | Edited comment updated below the post                          |
+|                        | Delete a comment                                        | Comment removed from the post                                  |
+| Profile Management     | Update profile information                              | Profile information updated and displayed correctly            |
+| Map View Integration   | View the map on the blog post detail page               | Map displays with a marker at the post's location              |
+|                        | Click on a marker on the map                            | Popup with post title and link to detailed view                |
+| Responsive Design      | View the site on various screen sizes (mobile, tablet)  | Layout adjusts to fit screen size without breaking             |
+
+### Deployment
+
+#### Development Environment Setup
+
+To set up the development environment, follow these steps:
+
+1. **Clone the repository:**
+    ```sh
+    git clone https://github.com/username/UrbexHiddenTreasure.git
+    ```
+2. **Navigate into the directory:**
+    ```sh
+    cd UrbexHiddenTreasure
+    ```
+3. **Install the dependencies:**
+    ```sh
+    pip install -r requirements.txt
+    ```
+4. **Set up the database:**
+    ```sh
+    python manage.py migrate
+    ```
+
+#### Deployment to Production
+
+The application is deployed to Heroku. Follow these steps to deploy:
+
+1. **Login to Heroku:**
+    ```sh
+    heroku login
+    ```
+2. **Create a new Heroku app:**
+    ```sh
+    heroku create
+    ```
+3. **Set up environment variables:**
+    ```sh
+    heroku config:set SECRET_KEY='your_secret_key'
+    heroku config:set DATABASE_URL='your_database_url'
+    ```
+4. **Deploy the application:**
+    ```sh
+    git push heroku main
+    ```
+
+### Source Credits
+
+#### References/Documentation/Tutorials
+
+- Django documentation: https://docs.djangoproject.com/
+- Leaflet.js documentation: https://leafletjs.com/
+- Bootstrap documentation: https://getbootstrap.com/
+
+#### Media and Styling Credits
+
+- Background images and icons from Cloudinary.
+- Fonts from Google Fonts.
