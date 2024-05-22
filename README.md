@@ -16,7 +16,6 @@
      - [Detailed Blog View](#detailed-blog-view)
      - [User Authentication](#user-authentication)
      - [Commenting System](#commenting-system)
-     - [Like Feature](#like-feature)
      - [Profile Management](#profile-management)
      - [Map View Integration](#map-view-integration)
    - [Future Features](#future-features)
@@ -40,7 +39,17 @@
 7. [Deployment](#deployment)
    - [Development Environment Setup](#development-environment-setup)
    - [Deployment to Production](#deployment-to-production)
-8. [Source Credits](#source-credits)
+8. [Getting Started](#getting-started)
+   - [Create a Django Project](#create-a-django-project)
+   - [Create a Blog Application](#create-a-blog-application)
+   - [Create a Virtual Environment and Install Django](#create-a-virtual-environment-and-install-django)
+   - [Create Database Models](#create-database-models)
+   - [Register the Blog Application](#register-the-blog-application)
+   - [Run the Project and Migrate the Models](#run-the-project-and-migrate-the-models)
+   - [Install Django Extensions](#install-django-extensions)
+   - [Setup the Package](#setup-the-package)
+   - [Generate the ERD](#generate-the-erd)
+9. [Source Credits](#source-credits)
    - [References/Documentation/Tutorials](#referencesdocumentationtutorials)
    - [Media and Styling Credits](#media-and-styling-credits)
 
@@ -53,19 +62,10 @@ This project aims to create a vibrant, interactive community around urban explor
 
 ## UI/UX Design
 ### Agile Development Approach
-The development of Urbex Hidden Treasure adopted an Agile approach, prioritizing user feedback and iterative updates to ensure the platform evolves in alignment with user needs and expectations. Regular sprint reviews and planning sessions were integral to this process, helping to refine features and functionality continuously.
+The development of Urbex Hidden Treasure adopted an Agile approach, prioritizing user feedback and iterative updates to ensure the platform evolves in alignment with user needs and expectations. Regular reviews and planning sessions were integral to this process, helping to refine features and functionality continuously.
 
 ### Wireframes
-Initial design concepts were visualized through wireframes, which provided a schematic representation of the user interface and experience. These wireframes served as a foundational blueprint for the development team and were refined over multiple iterations based on stakeholder feedback. During the development process, some elements were adjusted for practicality and completeness, resulting in a final product that may look different from the initial wireframes.
-
-![landingpage_wireframe](https://github.com/FabiMe/Urbex-Hidden-Treasure/assets/136444209/5c45244a-6980-43d2-a671-09657456d5ce)
-
-![sign_up_wireframe](https://github.com/FabiMe/Urbex-Hidden-Treasure/assets/136444209/9c664ff2-bf96-4b6d-84d5-c69297015d82)
-
-![blog_detail_wireframe ](https://github.com/FabiMe/Urbex-Hidden-Treasure/assets/136444209/ec2cffb4-9707-48f3-8b48-af4eb87f5b23)
-
-![blog_overview_wireframe](https://github.com/FabiMe/Urbex-Hidden-Treasure/assets/136444209/84b21cad-874d-4e38-bc14-b110a4e9f87d)
-
+Initial design concepts were visualized through wireframes, which provided a schematic representation of the user interface and experience. These wireframes served as a foundational blueprint for the development process and were refined over multiple iterations based on stakeholder feedback. During the development process, some elements were adjusted for practicality and completeness, resulting in a final product that may look different from the initial wireframes.
 
 ### Site Goals
 The primary objectives of Urbex Hidden Treasure are to:
@@ -74,12 +74,28 @@ The primary objectives of Urbex Hidden Treasure are to:
 - Provide educational content about the history and context of various urban locations.
 
 ### Five Planes of UX
-The design and functionality of Urbex Hidden Treasure are structured around Jesse James Garrett's five planes of user experience:
-- **Strategy Plane:** Focused on understanding user needs and business objectives.
-- **Scope Plane:** Defined the functional and content requirements.
-- **Structure Plane:** Detailed the interaction design and information architecture.
-- **Skeleton Plane:** Developed the interface, navigation, and information design.
-- **Surface Plane:** Crafted the visual design elements to create a pleasing aesthetic that enhances usability and user engagement.
+The design and functionality of Urbex Hidden Treasure are structured around Jesse James Garrett's five planes of user experience. Each plane represents a different aspect of the user experience, from the abstract strategy to the concrete surface.
+
+- **Strategy Plane:** 
+  - **User Needs:** Identifying the primary users as urban exploration enthusiasts who need a platform to share their discoveries, interact with other explorers, and find new places to explore.
+  - **Business Objectives:** Objectives include creating a vibrant community, increasing user engagement through interactive features, and providing a comprehensive resource for urban exploration.
+
+- **Scope Plane:**
+  - **Functional Requirements:** Includes technical functionalities such as user authentication, blog post creation, commenting system, profile management, and map view integration.
+  - **Content Requirements:** Involves the types of content the site will host, such as blog posts, comments, user profiles, and interactive maps.
+
+- **Structure Plane:**
+  - **Interaction Design:** Defines how users interact with the site, such as the flow of creating a new blog post, commenting on posts, navigating through the site, and viewing maps.
+  - **Information Architecture:** Involves organizing and structuring the content logically, such as categorizing blog posts, managing user profiles, and structuring the homepage to highlight recent posts.
+
+- **Skeleton Plane:**
+  - **Interface Design:** Focused on the layout and arrangement of elements on each page, ensuring that the interface is intuitive and user-friendly. This includes placement of buttons, forms, and navigation menus.
+  - **Navigation Design:** Creating a seamless navigation system that allows users to move through the site effortlessly. This includes the main navigation bar, sidebar menus, and internal linking within posts.
+  - **Information Design:** Ensuring that information is presented clearly and effectively, with a focus on readability and accessibility.
+
+- **Surface Plane:**
+  - **Visual Design:** Deals with the final visual elements of the site, including the color scheme, typography, imagery, and overall aesthetic. The goal is to create a visually appealing design that supports the user experience.
+  - **Brand Identity:** Consistency in visual elements to reinforce the brand identity of Urbex Hidden Treasure. This includes the use of specific fonts (like Bebas Neue for headings and Roboto for body text), a dark theme with high contrast for readability, and imagery that resonates with urban exploration.
 
 ### Visual Design Choices
 The platform utilizes a sleek, modern design with a minimalist color palette to reduce visual clutter and focus on content readability. Typography choices such as Bebas Neue for headings and Roboto for body text combine readability with character, supporting the overall urban and modern theme. The interface is designed to be intuitive, with responsive design considerations ensuring usability across various devices and screen sizes.
@@ -88,9 +104,10 @@ The platform utilizes a sleek, modern design with a minimalist color palette to 
 ### Existing Features
 #### Blog Post Listing
 Provides a dynamically updated list of blog posts, prominently displayed on the homepage. Each post includes a teaser excerpt, a visually striking featured image, and a link to the full article. Posts are sorted by their publication date, with the most recent posts appearing first.
+![blog_detail](https://github.com/FabiMe/Urbex-Hidden-Treasure/assets/136444209/d5752bcc-da4e-4396-b580-9558d46f26f2)
 
 #### Detailed Blog View
-Each blog post can be accessed in full detail, displaying all content, including multimedia elements like images. Users can interact with posts through comments. Posts with geographical tags show an embedded map view that pinpoints the location discussed.
+Each blog post can be accessed in full detail, displaying all content, including multimedia elements like images and videos. Users can interact with posts through comments. Posts with geographical tags show an embedded map view that pinpoints the location discussed.
 
 #### User Authentication
 The site supports comprehensive user authentication mechanisms. Users can sign up, log in, and log out. Authentication is managed through Django Allauth, ensuring security and data integrity.
@@ -147,7 +164,6 @@ External libraries enhance functionality and user experience:
 
 ### Database Technologies
 Cloudinary is used as the primary database, offering advanced features and reliability for storing complex relational data.
-
 
 ## Testing
 ### Test Guide

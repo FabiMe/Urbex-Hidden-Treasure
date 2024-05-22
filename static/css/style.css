@@ -62,7 +62,7 @@ body {
 }
 
 .navbar-toggler-icon {
-    color: #21d5e2; /* Color for toggler icon */
+    color: white; /* Setting the font icon color */
 }
 
 .account-icon i {
