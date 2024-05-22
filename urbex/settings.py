@@ -30,12 +30,12 @@ TEMPLATES_DIR = os.path.join(BASE_DIR, 'templates')
 SECRET_KEY = os.environ.get('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 X_FRAME_OPTIONS = 'SAMEORIGIN'
 
 ALLOWED_HOSTS = [
-    'urbex-hidden-treasure-80de41f05cad.herokuapp.com', 'localhost', '8000-fabime-urbexhiddentreas-8r4208f86yz.ws-eu111.gitpod.io']
+    'urbex-hidden-treasure-80de41f05cad.herokuapp.com', 'localhost', '8000-fabime-urbexhiddentreas-8r4208f86yz.ws-eu114.gitpod.io']
 
 
 # Application definition
@@ -56,6 +56,7 @@ INSTALLED_APPS = [
     'django_summernote',
     'crispy_forms',
     'blog',
+    "django_extensions",
 ]
 
 SITE_ID = 1

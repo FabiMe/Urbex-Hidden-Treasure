@@ -1,290 +1,173 @@
-# Urbex Hidden Treasure
+# Urbex Hidden Treasure Documentation
 
 ## Table of Contents
-- [Urbex Hidden Treasure](#urbex-hidden-treasure)
-  - [Table of Contents](#table-of-contents)
-  - [Project Title](#project-title)
-  - [Project Description](#project-description)
-  - [Goals and Objectives](#goals-and-objectives)
-    - [Project Goals](#project-goals)
-    - [Objectives](#objectives)
-      - [Development Objectives](#development-objectives)
-      - [Community Building Objectives](#community-building-objectives)
-      - [Content Discovery Objectives](#content-discovery-objectives)
-    - [Success Criteria](#success-criteria)
-  - [Target Audience](#target-audience)
-  - [Features](#features)
-    - [1. User Authentication and Profiles](#1-user-authentication-and-profiles)
-    - [2. Intuitive User Interface](#2-intuitive-user-interface)
-    - [3. Social Interaction](#3-social-interaction)
-    - [4. Content Creation and Editing](#4-content-creation-and-editing)
-    - [5. Community Building](#5-community-building)
-    - [6. Content Discovery](#6-content-discovery)
-    - [7. Notification System](#7-notification-system)
-    - [8. Security](#8-security)
-    - [9. Contribution Tracking](#9-contribution-tracking)
-    - [10. Success Criteria Tracking](#10-success-criteria-tracking)
-  - [Manual Testing](#manual-testing)
-    - [User Authentication and Profiles](#user-authentication-and-profiles)
-    - [User Interface](#user-interface)
-    - [Social Interaction](#social-interaction)
-    - [Content Creation and Editing](#content-creation-and-editing)
-    - [Community Building](#community-building)
-    - [Content Discovery](#content-discovery)
-    - [Notification System](#notification-system)
-    - [Security](#security)
-    - [Contribution Tracking](#contribution-tracking)
-    - [Success Criteria Tracking](#success-criteria-tracking)
-  - [Fixed Bugs](#fixed-bugs)
-  - [Credits](#credits)
-    - [Code](#code)
-    - [Images](#images)
+1. [Introduction](#introduction)
+   - [Site Overview](#site-overview)
+   - [Purpose and Scope](#purpose-and-scope)
+2. [UI/UX Design](#uiux-design)
+   - [Agile Development Approach](#agile-development-approach)
+   - [Wireframes](#wireframes)
+   - [Site Goals](#site-goals)
+   - [Five Planes of UX](#five-planes-of-ux)
+   - [Visual Design Choices](#visual-design-choices)
+3. [Features](#features)
+   - [Existing Features](#existing-features)
+     - [Blog Post Listing](#blog-post-listing)
+     - [Detailed Blog View](#detailed-blog-view)
+     - [User Authentication](#user-authentication)
+     - [Commenting System](#commenting-system)
+     - [Like Feature](#like-feature)
+     - [Profile Management](#profile-management)
+     - [Map View Integration](#map-view-integration)
+   - [Future Features](#future-features)
+4. [Database Design](#database-design)
+   - [Database Model Description](#database-model-description)
+   - [Custom Model Features](#custom-model-features)
+   - [CRUD Operations](#crud-operations)
+5. [Technologies Used](#technologies-used)
+   - [Work Environments and Hosting](#work-environments-and-hosting)
+   - [Python Libraries](#python-libraries)
+   - [Django Libraries](#django-libraries)
+   - [External Libraries](#external-libraries)
+   - [Database Technologies](#database-technologies)
+6. [Testing](#testing)
+   - [Test Guide](#test-guide)
+   - [Validator Testing](#validator-testing)
+   - [Browser Compatibility Testing](#browser-compatibility-testing)
+   - [List of Fixed Bugs](#list-of-fixed-bugs)
+   - [List of Unfixed Bugs](#list-of-unfixed-bugs)
+7. [Deployment](#deployment)
+   - [Development Environment Setup](#development-environment-setup)
+   - [Deployment to Production](#deployment-to-production)
+8. [Source Credits](#source-credits)
+   - [References/Documentation/Tutorials](#referencesdocumentationtutorials)
+   - [Media and Styling Credits](#media-and-styling-credits)
 
-## Project Title
-Urbex Hidden Treasure
+## Introduction
+### Site Overview
+Urbex Hidden Treasure is a comprehensive digital platform designed specifically for urban exploration enthusiasts. It serves as a central hub where adventurers can post detailed accounts of their explorations, share photos, and engage with a community of like-minded individuals. This platform not only catalogs urban explorations but also integrates interactive maps to enhance user experience by visually representing exploration sites.
 
-## Project Description
-Urbex Hidden Treasure is a web application dedicated to exploring and sharing hidden gems in urban exploration. Discover abandoned places, share your experiences, and connect with like-minded adventurers.
+### Purpose and Scope
+This project aims to create a vibrant, interactive community around urban exploration, providing tools and features that allow users to document their adventures, share insights, and discover new locations through the experiences of others. It targets urban explorers, historians, photographers, and anyone intrigued by the hidden facets of urban environments.
 
-## Goals and Objectives
+## UI/UX Design
+### Agile Development Approach
+The development of Urbex Hidden Treasure adopted an Agile approach, prioritizing user feedback and iterative updates to ensure the platform evolves in alignment with user needs and expectations. Regular sprint reviews and planning sessions were integral to this process, helping to refine features and functionality continuously.
 
-### Project Goals
+### Wireframes
+Initial design concepts were visualized through wireframes, which provided a schematic representation of the user interface and experience. These wireframes served as a foundational blueprint for the development team and were refined over multiple iterations based on stakeholder feedback. [Link to wireframes]
 
-1. **Create a User-Friendly Urbex Platform:**
-   - Goal: Develop a web application that provides a seamless and intuitive user experience for exploring and sharing urban exploration adventures.
+### Site Goals
+The primary objectives of Urbex Hidden Treasure are to:
+- Facilitate the sharing of urban exploration content in a structured and engaging manner.
+- Foster a community of enthusiasts who can interact, collaborate, and share their passion for urban exploration.
+- Provide educational content about the history and context of various urban locations.
 
-2. **Build a Robust Community:**
-   - Goal: Foster a vibrant community of urban explorers by providing features for user interaction, such as comments, likes, and user profiles.
+### Five Planes of UX
+The design and functionality of Urbex Hidden Treasure are structured around Jesse James Garrett's five planes of user experience:
+- **Strategy Plane:** Focused on understanding user needs and business objectives.
+- **Scope Plane:** Defined the functional and content requirements.
+- **Structure Plane:** Detailed the interaction design and information architecture.
+- **Skeleton Plane:** Developed the interface, navigation, and information design.
+- **Surface Plane:** Crafted the visual design elements to create a pleasing aesthetic that enhances usability and user engagement.
 
-3. **Showcase Hidden Gems:**
-   - Goal: Enable users to showcase and discover hidden gems in urban exploration, contributing to a database of intriguing and unique locations.
-
-### Objectives
-
-#### Development Objectives
-
-1. **Implement User Authentication and Profiles:**
-   - Objective: Create a secure user authentication system and user profiles to enhance personalization and engagement.
-
-2. **Design an Appealing User Interface:**
-   - Objective: Develop an aesthetically pleasing and responsive user interface that encourages users to explore and contribute.
-
-3. **Integrate Like and Comment Features:**
-   - Objective: Implement features that allow users to express appreciation through likes and engage in discussions through comments.
-
-4. **Enable Post Creation and Editing:**
-   - Objective: Provide users with the ability to create, edit, and delete their posts to share their urban exploration experiences.
-
-#### Community Building Objectives
-
-1. **Encourage User Interaction:**
-   - Objective: Design features that encourage users to interact with each other's content, fostering a sense of community within the platform.
-
-2. **Implement Notification System:**
-   - Objective: Create a notification system to keep users informed about likes, comments, and other relevant activities on their posts.
-
-#### Content Discovery Objectives
-
-1. **Optimize Search and Exploration:**
-   - Objective: Develop an efficient search and exploration mechanism to help users discover new and popular urban exploration posts.
-
-2. **Curate Featured Content:**
-   - Objective: Implement a system to curate and highlight exceptional posts, showcasing the most intriguing hidden treasures.
-
-### Success Criteria
-
-1. **Active User Engagement:**
-   - Criteria: Achieve a consistent level of user engagement, measured by likes, comments, and post creation frequency.
-
-2. **Growing Community Size:**
-   - Criteria: Increase the number of registered users and active participants within the community over a defined period.
-
-3. **Positive User Feedback:**
-   - Criteria: Gather positive feedback through user surveys, reviews, and community forums to assess user satisfaction.
-
-4. **Content Diversity:**
-   - Criteria: Ensure a diverse range of urban exploration content, representing various locations and experiences.
-
-
-## Target Audience
-
-The Urbex Hidden Treasure web application is designed for:
-
-- **Urban Explorers:** Enthusiasts who enjoy discovering and exploring abandoned or hidden places within urban environments.
-
-- **Photographers:** Individuals interested in capturing and sharing visually compelling images of unique and undiscovered locations.
-
-- **Adventure Seekers:** People with a passion for adventure and a desire to uncover hidden gems and intriguing stories within urban landscapes.
-
-- **Community Builders:** Users who value being part of a community of like-minded individuals, sharing experiences, and engaging with others.
-
-- **Content Creators:** Individuals who wish to contribute by sharing their urban exploration stories, photos, and insights with a broader audience.
-
-Whether you are an urban explorer looking for new locations, a photographer wanting to showcase your work, or simply someone intrigued by the concept of hidden treasures in urban environments, Urbex Hidden Treasure welcomes you to join our community and share in the excitement of the unexpected.
+### Visual Design Choices
+The platform utilizes a sleek, modern design with a minimalist color palette to reduce visual clutter and focus on content readability. Typography choices such as Bebas Neue for headings and Roboto for body text combine readability with character, supporting the overall urban and modern theme. The interface is designed to be intuitive, with responsive design considerations ensuring usability across various devices and screen sizes.
 
 ## Features
+### Existing Features
+#### Blog Post Listing
+Provides a dynamically updated list of blog posts, prominently displayed on the homepage. Each post includes a teaser excerpt, a visually striking featured image, and a link to the full article. Posts are sorted by their publication date, with the most recent posts appearing first.
 
-### 1. User Authentication and Profiles
+#### Detailed Blog View
+Each blog post can be accessed in full detail, displaying all content, including multimedia elements like images and videos. Users can interact with posts through likes and comments. Posts with geographical tags show an embedded map view that pinpoints the location discussed.
 
-- **Secure Authentication:** Users can securely register and log in to the platform.
-  
-- **User Profiles:** Personalized user profiles to showcase individual urban exploration experiences.
+#### User Authentication
+The site supports comprehensive user authentication mechanisms. Users can sign up, log in, and log out. Authentication is managed through Django's built-in user management system, ensuring security and data integrity.
 
-### 2. Intuitive User Interface
+#### Commenting System
+A fully integrated commenting system allows registered users to post comments on articles. Comments can be moderated by administrators to maintain quality and relevance.
 
-- **Responsive Design:** Aesthetically pleasing and responsive UI for seamless exploration on various devices.
+#### Like Feature
+Users can express appreciation for content through a like system, which is tallied and displayed on each post. This system enhances user engagement and provides feedback to content creators.
 
-- **Interactive Navigation:** Easy navigation through posts, profiles, and exploration categories.
+#### Profile Management
+Users have the ability to view and edit their profiles, enhancing the personalization of the user experience. Profile management also includes the option to delete accounts, ensuring users have control over their data.
 
-### 3. Social Interaction
+#### Map View Integration
+Interactive maps are integrated into the platform using Leaflet.js, which allows users to visually explore the locations related to each post. This feature enriches the storytelling aspect by providing geographical context.
 
-- **Likes and Comments:** Users can express appreciation through likes and engage in discussions via comments.
+### Future Features
+Planned enhancements include:
+- Real-time social media integration to allow users to share posts directly to their social media accounts.
+- Advanced search functionality with filters for location, date, and popularity to help users find specific content more easily.
 
-- **Notification System:** Stay informed about likes, comments, and other relevant activities on your posts.
+## Database Design
+### Database Model Description
+The project uses several Django models to manage its data:
+- **Post:** Stores all information about blog entries, including title, content, and meta-data like author and timestamps.
+- **User:** Utilizes Django’s built-in User model for authentication and user management.
+- **Comment:** Linked to blog posts for user interactions.
+- **Category:** Allows posts to be categorized to help organize content and aid in navigation.
+- **Article:** Used for longer form content that is separate from regular blog posts.
 
-### 4. Content Creation and Editing
+### Custom Model Features
+Custom model methods include:
+- `number_of_likes()`: Returns the count of likes for each post, allowing for dynamic display in templates.
+- Auto-generated slugs for posts: Ensures URLs are readable and SEO-friendly.
 
-- **Create Posts:** Users can create and share their urban exploration stories with images.
+### CRUD Operations
+The application supports full CRUD (Create, Read, Update, Delete) capabilities for blog posts, user profiles, and comments, providing a dynamic and interactive user experience.
 
-- **Post Editing:** The ability to edit and update posts to keep content current.
+## Technologies Used
+### Work Environments and Hosting
+The application is developed using Django and Python. The live application is hosted on Heroku, which provides a robust platform for app deployment and scaling.
 
-### 5. Community Building
+### Python Libraries
+Key Python libraries used include:
+- **Django:** The core framework providing the structure and tools for web application development.
+- **Pillow:** Used for image processing capabilities within Django.
+- **Gunicorn:** Serves as the HTTP server for Django applications on Heroku.
 
-- **User Interaction:** Encourages users to interact with each other's content, fostering a sense of community.
+### Django Libraries
+Django’s rich ecosystem is leveraged to extend the functionality of Urbex Hidden Treasure, including:
+- **Django Forms:** Simplifies the creation and handling of HTML forms.
+- **Django Admin:** Provides a ready-to-use interface for site administration.
 
-- **Featured Content:** Highlight exceptional posts to showcase the most intriguing hidden treasures.
+### External Libraries
+External libraries enhance functionality and user experience:
+- **Leaflet.js:** For interactive maps that do not require complex GIS capabilities.
+- **Bootstrap:** Used for responsive design and modern UI components.
 
-### 6. Content Discovery
+### Database Technologies
+PostgreSQL is used as the primary database, offering advanced features and reliability for storing complex relational data.
 
-- **Efficient Search:** A search mechanism to help users discover new and popular urban exploration posts.
+## Testing
+### Test Guide
+Instructions on running automated tests to ensure application stability and performance. Tests cover model validation, view functionality, and user interaction flows.
 
-- **Curated Exploration:** Curation of featured content for a diverse and engaging exploration experience.
+### Validator Testing
+HTML and CSS code passes W3C validation without errors, ensuring standards compliance and browser compatibility.
 
-### 7. Notification System
+### Browser Compatibility Testing
+The site is tested across modern browsers including Google Chrome, Mozilla Firefox, and Safari, with adjustments made to ensure consistent behavior and appearance.
 
-- **Real-time Notifications:** Users receive real-time notifications for likes, comments, and other activities.
+### List of Fixed Bugs
+- **Map Loading Issue:** Fixed a bug where the map would not load correctly on initial page visits by ensuring asynchronous loading and proper initialization in JavaScript.
 
-### 8. Security
+### List of Unfixed Bugs
+- **Delayed Comment Display:** Occasionally, comments may not appear immediately due to caching issues. Work is ongoing to address this in future updates.
 
-- **Data Protection:** Implement measures to ensure the security and privacy of user data.
+## Deployment
+### Development Environment Setup
+Detailed steps to set up a local development environment, including cloning the GitHub repository, setting up a virtual environment, installing dependencies, and running the Django development server.
 
-### 9. Contribution Tracking
+### Deployment to Production
+Comprehensive instructions for deploying the application to Heroku, including setting environment variables, configuring Django settings for production, and using Heroku's Git-based deployment workflow.
 
-- **Likes and Comments Count:** Track the number of likes and comments to gauge post popularity.
+## Source Credits
+### References/Documentation/Tutorials
+A list of key resources, documentation, and tutorials that provided guidance and code snippets during the development process.
 
-### 10. Success Criteria Tracking
-
-- **Engagement Metrics:** Monitor and track engagement metrics such as user interactions, community growth, and positive feedback.
-
-Urbex Hidden Treasure is continuously evolving, and additional features may be introduced to enhance the user experience and community engagement.
-
-## Manual Testing
-
-### User Authentication and Profiles
-
-1. **Registration:**
-   - [ ] Verify that users can successfully register with valid information.
-   - [ ] Ensure proper error messages are displayed for invalid registration attempts.
-
-2. **Login:**
-   - [ ] Confirm users can log in with valid credentials.
-   - [ ] Verify proper error messages for unsuccessful login attempts.
-
-3. **User Profile:**
-   - [ ] Check that user profiles display correct information.
-   - [ ] Verify the ability to edit and update user profiles.
-
-### User Interface
-
-4. **Responsive Design:**
-   - [ ] Test the application on various devices and browsers to ensure responsiveness.
-
-5. **Navigation:**
-   - [ ] Confirm smooth navigation between posts, profiles, and exploration categories.
-
-### Social Interaction
-
-6. **Likes:**
-   - [ ] Confirm users can like posts.
-   - [ ] Verify the accurate display of like counts.
-
-7. **Comments:**
-   - [ ] Check the ability to add comments to posts.
-   - [ ] Ensure comments are displayed correctly, and counts are accurate.
-
-8. **Notification System:**
-   - [ ] Confirm users receive real-time notifications for likes and comments.
-
-### Content Creation and Editing
-
-9. **Create Posts:**
-   - [ ] Verify users can successfully create and publish posts.
-
-10. **Post Editing:**
-   - [ ] Test the ability to edit and update posts.
-
-### Community Building
-
-11. **User Interaction:**
-   - [ ] Confirm users can interact with each other's content through likes and comments.
-
-12. **Featured Content:**
-   - [ ] Verify the proper curation and highlighting of exceptional posts.
-
-### Content Discovery
-
-13. **Search Mechanism:**
-   - [ ] Test the search feature for efficiency and accuracy.
-
-14. **Curated Exploration:**
-   - [ ] Verify the curation system for a diverse and engaging exploration experience.
-
-### Notification System
-
-15. **Real-time Notifications:**
-   - [ ] Confirm the prompt delivery of real-time notifications.
-
-### Security
-
-16. **Data Protection:**
-   - [ ] Ensure that user data is stored securely and protected.
-
-### Contribution Tracking
-
-17. **Likes and Comments Count:**
-   - [ ] Verify accurate tracking of likes and comments for each post.
-
-### Success Criteria Tracking
-
-18. **Engagement Metrics:**
-   - [ ] Monitor and track engagement metrics, such as user interactions and community growth.
-
-
-## Fixed Bugs
-**Bug: UI Layout Issue on Mobile Devices**
-   - The UI layout is distorted on smaller screens, affecting the readability of post content.
-   - [ ] **Steps to Reproduce:**
-     - [ ] Open the application on a mobile device.
-   - [ ] **Expected Result:**
-     - [ ] Responsive design with a well-organized layout.
-   - [ ] **Actual Result:**
-     - [ ] Distorted UI elements, making it difficult to read content.
-   - [ ] **Fix:**
-     - [ ] Adjusted CSS styles to improve responsiveness on smaller screens.
-
-
-## Credits 
-
-### Code
-The structure and some code inspiration for this project were based on the Code Institute Walkthrough Project.
-
-### Images
-- [Graffiti Pool](https://www.pexels.com/de-de/foto/graffiti-pool-verlassen-urbex-17506281/) (https://www.pexels.com/@username)
-  - Image sourced from Pexels
-
-- [Dark Industrial Building](https://www.pexels.com/de-de/foto/licht-dunkel-gebaude-industrie-10143298/) (https://www.pexels.com/@username)
-  - Image sourced from Pexels
-  
-  https://pixabay.com/photos/atom-nuclear-power-plant-abandoned-3669818/
-  https://pixabay.com/photos/urban-urbex-lostplace-abandoned-628276/
-  https://pixabay.com/photos/skating-disaster-factory-leave-3995560/
+### Media and Styling Credits
+Credits for images, icons, and other media used in the project, sourced from various free and paid resources.

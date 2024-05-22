@@ -9,8 +9,11 @@ from django.urls import reverse
 from django.http import HttpResponseRedirect
 from django.contrib.auth.models import User
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.views.generic.edit import UpdateView, DeleteView
+from django.urls import reverse_lazy
 from .forms import SignUpForm, EditProfileForm, LoginForm, CommentForm, PostForm
-from .models import Post
+from .models import Post, Comment
+
 
 
 class PostList(generic.ListView):
@@ -204,3 +207,32 @@ class MapView(View):
     def get(self, request, *args, **kwargs):
         posts = Post.objects.exclude(latitude__isnull=True).exclude(longitude__isnull=True)
         return render(request, 'map.html', {'posts': posts})
+
+class CommentUpdateView(LoginRequiredMixin, UpdateView):
+    model = Comment
+    fields = ['body']
+    template_name = 'edit_comment.html'
+    context_object_name = 'comment'
+
+    def get_queryset(self):
+        """
+        This method is an implicit object-level permission management
+        to ensure only the comment owner can update the comment.
+        """
+        queryset = super().get_queryset()
+        return queryset.filter(user=self.request.user)
+
+    def get_success_url(self):
+        return reverse_lazy('post_detail', kwargs={'slug': self.object.post.slug})
+
+class CommentDeleteView(LoginRequiredMixin, DeleteView):
+    model = Comment
+    template_name = 'delete_comment.html'
+    context_object_name = 'comment'
+
+    def get_queryset(self):
+        queryset = super().get_queryset()
+        return queryset.filter(user=self.request.user)
+
+    def get_success_url(self):
+        return reverse_lazy('post_detail', kwargs={'slug': self.object.post.slug})

@@ -1,7 +1,9 @@
 from django.db import models
+from django.conf import settings
 from django.contrib.auth.models import User
 from cloudinary.models import CloudinaryField
 from django.utils.text import slugify
+
 
 STATUS = ((0, "Draft"), (1, "Published"))
 
@@ -37,8 +39,8 @@ class Post(models.Model):
 
 
 class Comment(models.Model):
-    post = models.ForeignKey(
-        Post, on_delete=models.CASCADE, related_name='comments')
+    post = models.ForeignKey(Post, on_delete=models.CASCADE, related_name='comments')
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, null=True, on_delete=models.CASCADE)
     name = models.CharField(max_length=80)
     email = models.EmailField()
     body = models.TextField()
@@ -49,4 +51,24 @@ class Comment(models.Model):
         ordering = ['created_on']
 
     def __str__(self):
-        return f"Comment  {self.body} by {self.name}"
+        return f"Comment {self.body} by {self.name}"
+
+class Category(models.Model):
+    name = models.CharField(max_length=200)
+    slug = models.CharField(max_length=200)
+    description = models.CharField(max_length=350)
+
+    updated = models.DateTimeField(auto_now=True)
+    created = models.DateTimeField(auto_now_add=True)
+
+class Article(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    categories = models.ManyToManyField(Category, related_name="categories")
+
+    title = models.CharField(max_length=200)
+    slug = models.CharField(max_length=200)
+    title = models.CharField(max_length=300)
+    content = models.TextField()
+
+    updated = models.DateTimeField(auto_now=True)
+    created = models.DateTimeField(auto_now_add=True)
