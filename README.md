@@ -67,6 +67,19 @@ The development of Urbex Hidden Treasure adopted an Agile approach, prioritizing
 ### Wireframes
 Initial design concepts were visualized through wireframes, which provided a schematic representation of the user interface and experience. These wireframes served as a foundational blueprint for the development process and were refined over multiple iterations based on stakeholder feedback. During the development process, some elements were adjusted for practicality and completeness, resulting in a final product that may look different from the initial wireframes.
 
+#### The Landing Page
+![landingpage_wireframe](https://github.com/FabiMe/Urbex-The-Hidden-Gem/assets/136444209/862309c6-311a-4961-8510-f710fbde1720)
+
+#### Blog Detail 
+![blog_detail_wireframe ](https://github.com/FabiMe/Urbex-The-Hidden-Gem/assets/136444209/c2f8d3bf-808e-4525-9c0c-7937049bbfc5)
+
+#### Blog Overview
+![blog_overview_wireframe](https://github.com/FabiMe/Urbex-The-Hidden-Gem/assets/136444209/68ced510-742c-4f82-863a-59271e954c9b)
+
+#### Sign Up Page
+![sign_up_wireframe](https://github.com/FabiMe/Urbex-The-Hidden-Gem/assets/136444209/442f3ed7-7753-4369-8173-46f99487b0be)
+
+
 ### Site Goals
 The primary objectives of Urbex Hidden Treasure are to:
 - Facilitate the sharing of urban exploration content in a structured and engaging manner.
@@ -109,8 +122,18 @@ Provides a dynamically updated list of blog posts, prominently displayed on the 
 #### Detailed Blog View
 Each blog post can be accessed in full detail, displaying all content, including multimedia elements like images and videos. Users can interact with posts through comments. Posts with geographical tags show an embedded map view that pinpoints the location discussed.
 
+![blog_detail_1](https://github.com/FabiMe/Urbex-The-Hidden-Gem/assets/136444209/a224f396-8b83-45a9-acf2-2057d9ef4831)
+
+![blog_detail_2](https://github.com/FabiMe/Urbex-The-Hidden-Gem/assets/136444209/9e0f9916-1794-42b5-b38f-aa41f6fe1a7d)
+
 #### User Authentication
 The site supports comprehensive user authentication mechanisms. Users can sign up, log in, and log out. Authentication is managed through Django Allauth, ensuring security and data integrity.
+
+##### Sign In
+![sign_in](https://github.com/FabiMe/Urbex-The-Hidden-Gem/assets/136444209/4bea6f73-218b-4c35-a050-1b0ca33e6b88)
+
+##### Sign Up
+![sign_up](https://github.com/FabiMe/Urbex-The-Hidden-Gem/assets/136444209/f44d40e7-4a6e-41df-8b05-77668586e12f)
 
 #### Commenting System
 A fully integrated commenting system allows registered users to post comments on articles. Comments can be moderated by administrators to maintain quality and relevance. Comments must be approved by an admin before they are displayed on the page.
