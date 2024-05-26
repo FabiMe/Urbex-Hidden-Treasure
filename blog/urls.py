@@ -24,8 +24,6 @@ urlpatterns = [
     path('login/', LoginView.as_view(), name='account_login'),
     path('logout/', LogoutView.as_view(), name='account_logout'),
     path('profile/', ProfileView.as_view(), name='account_profile'),
-    path('profile/edit/', EditProfileView.as_view(), name='account_edit_profile'),
-    path('profile/delete/', DeleteAccountView.as_view(), name='account_delete'),
 
     # Comment management
     path('comment/<int:pk>/edit/', CommentUpdateView.as_view(), name='edit_comment'),

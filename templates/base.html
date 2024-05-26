@@ -60,7 +60,6 @@
                         </a>
                         <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                             {% if user.is_authenticated %}
-                                <li><a class="dropdown-item" href="{% url 'profile_view' %}">Manage Account</a></li>
                                 <li><a class="dropdown-item" href="{% url 'account_logout' %}">Logout</a></li>
                             {% else %}
                                 <li><a class="dropdown-item" href="{% url 'account_login' %}">Login</a></li>

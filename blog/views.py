@@ -16,7 +16,6 @@ from .models import Post, Comment
 from django.contrib.auth.mixins import UserPassesTestMixin
 
 
-
 class PostList(generic.ListView):
     model = Post
     queryset = Post.objects.filter(status=1).order_by("-created_on")
@@ -33,7 +32,6 @@ class PostDetail(View):
         if post.likes.filter(id=request.user.id).exists():
             liked = True
 
-        # Check if latitude and longitude are provided
         show_map = post.latitude is not None and post.longitude is not None
 
         return render(
@@ -45,7 +43,7 @@ class PostDetail(View):
                 "commented": False,
                 "liked": liked,
                 "comment_form": CommentForm(),
-                "show_map": show_map  # Pass this to control map display in template
+                "show_map": show_map
             },
         )
 
@@ -77,7 +75,7 @@ class PostDetail(View):
                 "post": post,
                 "comments": comments,
                 "commented": True,
-                "comment_form": comment_form,  # Re-render the form with errors shown
+                "comment_form": comment_form,
                 "liked": liked,
                 "show_map": post.latitude is not None and post.longitude is not None
             },
@@ -89,8 +87,10 @@ class PostLike(View):
         post = get_object_or_404(Post, slug=slug)
         if post.likes.filter(id=request.user.id).exists():
             post.likes.remove(request.user)
+            messages.success(request, 'You unliked the post.')
         else:
             post.likes.add(request.user)
+            messages.success(request, 'You liked the post.')
 
         return HttpResponseRedirect(reverse('post_detail', args=[slug]))
 
@@ -105,6 +105,7 @@ class PostUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
         return self.request.user == post.author
 
     def get_success_url(self):
+        messages.success(self.request, 'Post updated successfully.')
         return reverse_lazy('post_detail', kwargs={'slug': self.object.slug})
 
 
@@ -117,6 +118,10 @@ class PostDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
     def test_func(self):
         post = self.get_object()
         return self.request.user == post.author
+
+    def delete(self, request, *args, **kwargs):
+        messages.success(request, 'Post deleted successfully.')
+        return super().delete(request, *args, **kwargs)
 
 
 class SignUpView(View):
@@ -132,6 +137,7 @@ class SignUpView(View):
             messages.success(request, 'Account created successfully.')
             return redirect('home')
         return render(request, 'registration/signup.html', {'form': form})
+
 
 class LoginView(View):
     def get(self, request, *args, **kwargs):
@@ -204,7 +210,7 @@ class DeleteAccountView(View):
 class PostCreateView(LoginRequiredMixin, View):
     form_class = PostForm
     template_name = 'post_create.html'
-    login_url = '/login/'  # Redirect to login page if not logged in
+    login_url = '/login/'
 
     def get(self, request, *args, **kwargs):
         form = self.form_class()
@@ -214,8 +220,8 @@ class PostCreateView(LoginRequiredMixin, View):
         form = self.form_class(request.POST, request.FILES)
         if form.is_valid():
             new_post = form.save(commit=False)
-            new_post.author = request.user  # Set the author to the current user
-            new_post.status = 1  
+            new_post.author = request.user
+            new_post.status = 1
             new_post.save()
             messages.success(request, 'Blog post created successfully!')
             return redirect('home')
@@ -225,13 +231,15 @@ class PostCreateView(LoginRequiredMixin, View):
 class PostListView(ListView):
     model = Post
     template_name = 'index.html'
-    context_object_name = 'posts' 
+    context_object_name = 'posts'
     paginate_by = 6
+
 
 class MapView(View):
     def get(self, request, *args, **kwargs):
         posts = Post.objects.exclude(latitude__isnull=True).exclude(longitude__isnull=True)
         return render(request, 'map.html', {'posts': posts})
+
 
 class CommentUpdateView(LoginRequiredMixin, UpdateView):
     model = Comment
@@ -240,15 +248,13 @@ class CommentUpdateView(LoginRequiredMixin, UpdateView):
     context_object_name = 'comment'
 
     def get_queryset(self):
-        """
-        This method is an implicit object-level permission management
-        to ensure only the comment owner can update the comment.
-        """
         queryset = super().get_queryset()
         return queryset.filter(user=self.request.user)
 
     def get_success_url(self):
+        messages.success(self.request, 'Comment updated successfully.')
         return reverse_lazy('post_detail', kwargs={'slug': self.object.post.slug})
+
 
 class CommentDeleteView(LoginRequiredMixin, DeleteView):
     model = Comment
@@ -260,5 +266,5 @@ class CommentDeleteView(LoginRequiredMixin, DeleteView):
         return queryset.filter(user=self.request.user)
 
     def get_success_url(self):
+        messages.success(self.request, 'Comment deleted successfully.')
         return reverse_lazy('post_detail', kwargs={'slug': self.object.post.slug})
-
