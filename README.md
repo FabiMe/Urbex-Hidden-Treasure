@@ -128,7 +128,6 @@ Each blog post can be accessed in full detail, displaying all content, including
 
 #### User Authentication
 The site supports comprehensive user authentication mechanisms. Users can sign up, log in, and log out. Authentication is managed through Django Allauth, ensuring security and data integrity.
-
 ##### Sign In
 ![sign_in](https://github.com/FabiMe/Urbex-The-Hidden-Gem/assets/136444209/4bea6f73-218b-4c35-a050-1b0ca33e6b88)
 
@@ -146,10 +145,11 @@ All registered users have the ability to create new blog posts, sharing their ow
 
 #### Commenting System
 A fully integrated commenting system allows registered users to post comments on articles. Comments can be moderated by administrators to maintain quality and relevance. Comments must be approved by an admin before they are displayed on the page.
+![comments](https://github.com/FabiMe/boutique_ado_v1/assets/136444209/86357f98-640d-4b5e-9b97-724955b5fd4a)
+![comments_signed_in](https://github.com/FabiMe/boutique_ado_v1/assets/136444209/9d3d543e-a525-4de9-b0e2-c85b81998468)
 
 #### Map View Integration
 Interactive maps are integrated into the platform using Leaflet.js, which allows users to visually explore the locations related to each post. Each blog post includes an embedded map view showing the location discussed. Additionally, there is a dedicated map navigation point that provides an overview of all locations mentioned in the blog posts. This feature enriches the storytelling aspect by providing geographical context and allowing users to explore multiple locations through a single interface.
-
 ##### Blog Post Map
 ![pripyat](https://github.com/FabiMe/Fit-Hub/assets/136444209/5ccec439-467a-4e8f-8692-97301873fc18)
 
@@ -170,12 +170,57 @@ The project uses several Django models to manage its data:
 - **Category:** Allows posts to be categorized to help organize content and aid in navigation.
 - **Article:** Used for longer form content that is separate from regular blog posts.
 
+### Database Model
+![urbex_models (1)](https://github.com/FabiMe/boutique_ado_v1/assets/136444209/65de82d8-d7ee-4d59-8ce2-8d29017b794f)
+
+- To create an automatically generated ERD Model the following steps are crucial:
+
+- Uses Django's ORM with PostgreSQL. Models include:
+
+![image](https://github.com/FabiMe/Fitness-Forge/assets/136444209/722508d2-8890-47cf-91c3-ca3d77275d05)
+
+- This will create the bellow files and directories.
+
+![image](https://github.com/FabiMe/Fitness-Forge/assets/136444209/1f2af177-121c-45f0-93da-7ca0dacf2b32)
+
+- Create a blog application
+
+![image](https://github.com/FabiMe/Fitness-Forge/assets/136444209/e4a67d91-5ef6-4cbd-b449-4a478b81a0bf)
+
+- Install Django
+
+![image](https://github.com/FabiMe/Fitness-Forge/assets/136444209/6822922e-6758-40b7-a0c3-de2383178b84)
+
+- In blog/models.py 
+
+![image](https://github.com/FabiMe/Fitness-Forge/assets/136444209/9eced74b-9261-4679-a4c5-6da9f4775541)
+
+- In mysite/settings.py
+
+![image](https://github.com/FabiMe/Fitness-Forge/assets/136444209/1d81af87-8c66-4e4d-a954-0f7e83e071db)
+
+- Run the project and migrate the models
+
+![image](https://github.com/FabiMe/Fitness-Forge/assets/136444209/b61c960f-f4e6-49dd-ad18-d445d32b06e4)
+
+- Install django-extensions 
+
+![image](https://github.com/FabiMe/Fitness-Forge/assets/136444209/28514a57-5779-4805-85df-042cbdd95753)
+
+- Setup the package
+
+![image](https://github.com/FabiMe/Fitness-Forge/assets/136444209/c575987d-5557-4187-ba43-c6a8c64a3920)
+
+- Generate ERD Model
+
+![image](https://github.com/FabiMe/Fitness-Forge/assets/136444209/fefc1cc8-80c8-4355-bb55-a4050780b991)
+
 ### Custom Model Features
 Custom model methods include:
 - Auto-generated slugs for posts: Ensures URLs are readable and SEO-friendly.
 
 ### CRUD Operations
-The application supports full CRUD (Create, Read, Update, Delete) capabilities for blog posts, user profiles, and comments, providing a dynamic and interactive user experience.
+The application supports full CRUD (Create, Read, Update, Delete) capabilities for blog posts and comments, providing a dynamic and interactive user experience.
 
 ## Technologies Used
 ### Work Environments and Hosting
@@ -201,10 +246,6 @@ External libraries enhance functionality and user experience:
 Cloudinary is used as the primary database, offering advanced features and reliability for storing complex relational data.
 
 ## Testing
-### Test Guide
-Instructions on running automated tests to ensure application stability and performance. Tests cover model validation, view functionality, and user interaction flows.
-
-### Validator Testing
 
 Code is validated using tools like Flake8 and Pylint to ensure adherence to coding standards.
 
@@ -232,12 +273,16 @@ The following table lists the features that require manual testing, along with t
 | User Authentication    | Sign up with a new email                                | Account created and user logged in                             |
 |                        | Log in with existing credentials                        | User logged in successfully                                    |
 |                        | Log out                                                 | User logged out and redirected to home page                    |
+| User-Generated Content | Create a new blog post                                  | New post is created and displayed in the blog overview         |
+|                        | Edit an existing blog post                              | Updated post content displayed correctly                       |
+|                        | Delete an existing blog post                            | Post is removed from the blog overview                         |
 | Commenting System      | Post a comment on a blog post                           | Comment appears below the post                                 |
 |                        | Edit an existing comment                                | Edited comment updated below the post                          |
 |                        | Delete a comment                                        | Comment removed from the post                                  |
 | Profile Management     | Update profile information                              | Profile information updated and displayed correctly            |
 | Map View Integration   | View the map on the blog post detail page               | Map displays with a marker at the post's location              |
 |                        | Click on a marker on the map                            | Popup with post title and link to detailed view                |
+|                        | Navigate to the map overview                            | Map displays all post locations with markers                   |
 | Responsive Design      | View the site on various screen sizes (mobile, tablet)  | Layout adjusts to fit screen size without breaking             |
 
 ### Deployment

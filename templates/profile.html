@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container mt-4">
+    <h2>Manage Your Account</h2>
+    <div class="card">
+        <div class="card-body">
+            <p><strong>Name:</strong> {{ user.first_name }} {{ user.last_name }}</p>
+            <p><strong>Email:</strong> {{ user.email }}</p>
+            <a href="{% url 'account_edit_profile' %}" class="btn btn-primary">Update Account</a>
+            <a href="{% url 'account_delete' %}" class="btn btn-danger">Delete Account</a>
+        </div>
+    </div>
+</div>
+{% endblock %}

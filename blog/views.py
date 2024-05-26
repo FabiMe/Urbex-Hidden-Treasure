@@ -13,6 +13,7 @@ from django.views.generic.edit import UpdateView, DeleteView
 from django.urls import reverse_lazy
 from .forms import SignUpForm, EditProfileForm, LoginForm, CommentForm, PostForm
 from .models import Post, Comment
+from django.contrib.auth.mixins import UserPassesTestMixin
 
 
 
@@ -92,6 +93,30 @@ class PostLike(View):
             post.likes.add(request.user)
 
         return HttpResponseRedirect(reverse('post_detail', args=[slug]))
+
+
+class PostUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
+    model = Post
+    form_class = PostForm
+    template_name = 'edit_post.html'
+
+    def test_func(self):
+        post = self.get_object()
+        return self.request.user == post.author
+
+    def get_success_url(self):
+        return reverse_lazy('post_detail', kwargs={'slug': self.object.slug})
+
+
+class PostDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
+    model = Post
+    template_name = 'delete_post.html'
+    context_object_name = 'post'
+    success_url = reverse_lazy('home')
+
+    def test_func(self):
+        post = self.get_object()
+        return self.request.user == post.author
 
 
 class SignUpView(View):
@@ -236,3 +261,4 @@ class CommentDeleteView(LoginRequiredMixin, DeleteView):
 
     def get_success_url(self):
         return reverse_lazy('post_detail', kwargs={'slug': self.object.post.slug})
+

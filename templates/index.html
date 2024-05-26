@@ -44,6 +44,11 @@
                             <p class="card-text">{{ post.excerpt }}</p>
                             <p class="text-danger">No valid slug for this post.</p>
                             {% endif %}
+                            <!-- Update and Delete buttons -->
+                            {% if user.is_authenticated and user == post.author %}
+                            <a href="{% url 'update_post' post.slug %}" class="btn btn-secondary">Edit</a>
+                            <a href="{% url 'delete_post' post.slug %}" class="btn btn-danger">Delete</a>
+                            {% endif %}
                             <hr />
                             <!-- Metadata for the post -->
                             <p class="card-text text-muted h6">{{ post.created_on }}</p>
