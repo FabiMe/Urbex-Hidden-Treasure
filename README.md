@@ -15,8 +15,8 @@
      - [Blog Post Listing](#blog-post-listing)
      - [Detailed Blog View](#detailed-blog-view)
      - [User Authentication](#user-authentication)
+     - [User-Generated Content](#user-generated-content)
      - [Commenting System](#commenting-system)
-     - [Profile Management](#profile-management)
      - [Map View Integration](#map-view-integration)
    - [Future Features](#future-features)
 4. [Database Design](#database-design)
@@ -135,14 +135,26 @@ The site supports comprehensive user authentication mechanisms. Users can sign u
 ##### Sign Up
 ![sign_up](https://github.com/FabiMe/Urbex-The-Hidden-Gem/assets/136444209/f44d40e7-4a6e-41df-8b05-77668586e12f)
 
+#### User-Generated Content
+All registered users have the ability to create new blog posts, sharing their own urban exploration stories and experiences with the community. This feature encourages active participation and content generation from users.
+
+##### Create New Post Button
+![create_new_post](https://github.com/FabiMe/Urbex-The-Hidden-Gem/assets/136444209/0a6c7ddc-3578-47cc-a88b-ca65044169b1)
+
+##### Create New Blog Post 
+![create_new_post_2](https://github.com/FabiMe/Urbex-The-Hidden-Gem/assets/136444209/10f7ad5a-516c-4b9f-93f5-cb5ad39be92a)
+
 #### Commenting System
 A fully integrated commenting system allows registered users to post comments on articles. Comments can be moderated by administrators to maintain quality and relevance. Comments must be approved by an admin before they are displayed on the page.
 
-#### Profile Management
-Users have the ability to view and edit their profiles, enhancing the personalization of the user experience. Profile management also includes the option to delete accounts, ensuring users have control over their data.
-
 #### Map View Integration
-Interactive maps are integrated into the platform using Leaflet.js, which allows users to visually explore the locations related to each post. This feature enriches the storytelling aspect by providing geographical context.
+Interactive maps are integrated into the platform using Leaflet.js, which allows users to visually explore the locations related to each post. Each blog post includes an embedded map view showing the location discussed. Additionally, there is a dedicated map navigation point that provides an overview of all locations mentioned in the blog posts. This feature enriches the storytelling aspect by providing geographical context and allowing users to explore multiple locations through a single interface.
+
+##### Blog Post Map
+![pripyat](https://github.com/FabiMe/Fit-Hub/assets/136444209/5ccec439-467a-4e8f-8692-97301873fc18)
+
+##### Map Overview
+![map overview](https://github.com/FabiMe/Fit-Hub/assets/136444209/c11d0d74-981e-4887-9d12-a35e27ed4089)
 
 ### Future Features
 Planned enhancements include:

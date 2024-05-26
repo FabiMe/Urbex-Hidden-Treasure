@@ -57,8 +57,13 @@ body {
     background-color: #e0e0e0 !important; /* Light grey background on hover with !important */
 }
 
+.comment-heading {
+    color: #21d5e2 !important;
+}
+
 .navbar-toggler {
     border-color: #21d5e2; /* Toggler icon color */
+    background-color: #21d5e2;
 }
 
 .navbar-toggler-icon {
@@ -204,7 +209,7 @@ body {
 
 .login-message {
     background-color: rgb(255, 255, 255); /* Semi-transparent white */
-    border-radius: 15px; /* Rounded corners */
+    border-radius: 8px; /* Rounded corners */
     padding: 10px; 
 }
 
