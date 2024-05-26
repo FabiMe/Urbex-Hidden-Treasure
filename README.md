@@ -30,8 +30,11 @@
    - [External Libraries](#external-libraries)
    - [Database Technologies](#database-technologies)
 6. [Testing](#testing)
-   - [Test Guide](#test-guide)
+   - [Code Quality and Linting](#code-quality-and-linting)
    - [Validator Testing](#validator-testing)
+     - [Lighthouse Test](#lighthouse-test)
+     - [Mobile View](#mobile-view)
+     - [Desktop View](#desktop-view)
    - [Browser Compatibility Testing](#browser-compatibility-testing)
    - [List of Fixed Bugs](#list-of-fixed-bugs)
    - [List of Unfixed Bugs](#list-of-unfixed-bugs)
@@ -71,14 +74,13 @@ Initial design concepts were visualized through wireframes, which provided a sch
 ![landingpage_wireframe](https://github.com/FabiMe/Urbex-The-Hidden-Gem/assets/136444209/862309c6-311a-4961-8510-f710fbde1720)
 
 #### Blog Detail 
-![blog_detail_wireframe ](https://github.com/FabiMe/Urbex-The-Hidden-Gem/assets/136444209/c2f8d3bf-808e-4525-9c0c-7937049bbfc5)
+![blog_detail_wireframe](https://github.com/FabiMe/Urbex-The-Hidden-Gem/assets/136444209/c2f8d3bf-808e-4525-9c0c-7937049bbfc5)
 
 #### Blog Overview
 ![blog_overview_wireframe](https://github.com/FabiMe/Urbex-The-Hidden-Gem/assets/136444209/68ced510-742c-4f82-863a-59271e954c9b)
 
 #### Sign Up Page
 ![sign_up_wireframe](https://github.com/FabiMe/Urbex-The-Hidden-Gem/assets/136444209/442f3ed7-7753-4369-8173-46f99487b0be)
-
 
 ### Site Goals
 The primary objectives of Urbex Hidden Treasure are to:
@@ -123,7 +125,6 @@ Provides a dynamically updated list of blog posts, prominently displayed on the 
 Each blog post can be accessed in full detail, displaying all content, including multimedia elements like images and videos. Users can interact with posts through comments. Posts with geographical tags show an embedded map view that pinpoints the location discussed.
 
 ![blog_detail_1](https://github.com/FabiMe/Urbex-The-Hidden-Gem/assets/136444209/a224f396-8b83-45a9-acf2-2057d9ef4831)
-
 ![blog_detail_2](https://github.com/FabiMe/Urbex-The-Hidden-Gem/assets/136444209/9e0f9916-1794-42b5-b38f-aa41f6fe1a7d)
 
 #### User Authentication
@@ -173,45 +174,45 @@ The project uses several Django models to manage its data:
 ### Database Model
 ![urbex_models (1)](https://github.com/FabiMe/boutique_ado_v1/assets/136444209/65de82d8-d7ee-4d59-8ce2-8d29017b794f)
 
-- To create an automatically generated ERD Model the following steps are crucial:
+To create an automatically generated ERD Model the following steps are crucial:
 
-- Uses Django's ORM with PostgreSQL. Models include:
+Uses Django's ORM with PostgreSQL. Models include:
 
 ![image](https://github.com/FabiMe/Fitness-Forge/assets/136444209/722508d2-8890-47cf-91c3-ca3d77275d05)
 
-- This will create the bellow files and directories.
+This will create the below files and directories.
 
 ![image](https://github.com/FabiMe/Fitness-Forge/assets/136444209/1f2af177-121c-45f0-93da-7ca0dacf2b32)
 
-- Create a blog application
+Create a blog application
 
 ![image](https://github.com/FabiMe/Fitness-Forge/assets/136444209/e4a67d91-5ef6-4cbd-b449-4a478b81a0bf)
 
-- Install Django
+Install Django
 
 ![image](https://github.com/FabiMe/Fitness-Forge/assets/136444209/6822922e-6758-40b7-a0c3-de2383178b84)
 
-- In blog/models.py 
+In blog/models.py 
 
 ![image](https://github.com/FabiMe/Fitness-Forge/assets/136444209/9eced74b-9261-4679-a4c5-6da9f4775541)
 
-- In mysite/settings.py
+In mysite/settings.py
 
 ![image](https://github.com/FabiMe/Fitness-Forge/assets/136444209/1d81af87-8c66-4e4d-a954-0f7e83e071db)
 
-- Run the project and migrate the models
+Run the project and migrate the models
 
 ![image](https://github.com/FabiMe/Fitness-Forge/assets/136444209/b61c960f-f4e6-49dd-ad18-d445d32b06e4)
 
-- Install django-extensions 
+Install django-extensions 
 
 ![image](https://github.com/FabiMe/Fitness-Forge/assets/136444209/28514a57-5779-4805-85df-042cbdd95753)
 
-- Setup the package
+Setup the package
 
 ![image](https://github.com/FabiMe/Fitness-Forge/assets/136444209/c575987d-5557-4187-ba43-c6a8c64a3920)
 
-- Generate ERD Model
+Generate ERD Model
 
 ![image](https://github.com/FabiMe/Fitness-Forge/assets/136444209/fefc1cc8-80c8-4355-bb55-a4050780b991)
 
@@ -243,68 +244,59 @@ External libraries enhance functionality and user experience:
 - **Bootstrap:** Used for responsive design and modern UI components.
 
 ### Database Technologies
-Cloudinary is used as the primary database, offering advanced features and reliability for storing complex relational data.
+PostgreSQL is used as the primary database, offering advanced features and reliability for storing complex relational data.
 
 ## Testing
 
 Code is validated using tools like Flake8 and Pylint to ensure adherence to coding standards.
 
-### Browser Compatibility Testing
+### Code Quality and Linting
+We use `flake8` for linting the code to maintain quality and consistency. During the linting process, you may notice some errors or warnings. However, it's important to note the following:
 
+- **Preinstalled or Non-Self-Written Code**: Any flake8 errors or warnings that arise from preinstalled packages or code that is not written by the contributors of this project are not corrected. This decision is made to focus on the codebase we actively develop and maintain.
+
+### Validator Testing
+#### Lighthouse Test
+##### Mobile View
+![validator_mobile](https://github.com/FabiMe/boutique_ado_v1/assets/136444209/0c083744-62da-4922-9e92-420081754bb1)
+##### Desktop View
+![validator_desktop](https://github.com/FabiMe/boutique_ado_v1/assets/136444209/6a96137b-1af5-448f-8a73-78f88bc24de5)
+
+### Browser Compatibility Testing
 The application is tested across multiple browsers, including Chrome, Firefox, and Safari, to ensure compatibility.
 
 ### List of Fixed Bugs
-
 - Fixed issue with map markers not displaying correctly on certain browsers.
 - Resolved a bug where users couldn't delete their comments.
 
 ### List of Unfixed Bugs
-
 - Occasional slow loading times on the map view due to large datasets.
 
 ### Manual Testing
-
 The following table lists the features that require manual testing, along with the test cases and expected outcomes:
 
 | Section                | Feature                | Test Case                                               | Expected Outcome                                               | Testing                                                      | Result                                                  | Fix                                                 | Screenshot                                             |
 |------------------------|------------------------|---------------------------------------------------------|----------------------------------------------------------------|--------------------------------------------------------------|------------------------------------------------------|-----------------------------------------------------|-------------------------------------------------------|
-| Blog Post              | Blog Post Listing      | Navigate to the blog overview page                      | List of blog posts displayed with title, excerpt, author, date | Tested by navigating to the blog overview page               | The feature acted normally and displayed the list of blog posts | None                                                 | ![blog_navigation](https://github.com/FabiMe/Django-blog/assets/136444209/82033a60-96cb-4ec2-9f05-f966da96267c)![blog_detail](https://github.com/FabiMe/Django-blog/assets/136444209/f3ff768a-0f68-4ad7-8b42-4519467095db)                    |
-| Blog Post              | Detailed Blog View     | Click on a blog post title                              | Detailed view of the blog post with full content and comments   | Tested by clicking on a blog post title                      | The feature acted normally and displayed the detailed view of the blog post | None                                                 | ![navigate_post](https://github.com/FabiMe/Django-blog/assets/136444209/048e1ab6-03f7-4c2e-b0f4-4abaa1c92a5c)
-![blog_detail_1](https://github.com/FabiMe/Django-blog/assets/136444209/e4fbe588-1b70-47cd-858b-082366f95bc5)
-                    |
-| User Authentication    | Sign up                | Sign  up, email is not mandetory                        | Account created and user logged in                             | Tested by signing up without a new email                         | The feature acted normally and created the account, logged in the user | None                                                 | ![signup_test](https://github.com/FabiMe/Django-blog/assets/136444209/4dc2d46e-fb3f-4d05-a089-12491f9d1dc5)
-![signup_success](https://github.com/FabiMe/Django-blog/assets/136444209/b9949d3f-55cf-425d-848f-a5eb646768f4)                   |
-| User Authentication    | Log in                 | Log in with existing credentials                        | User logged in successfully                                    | Tested by logging in with existing credentials               | The feature acted normally and logged in the user    | None                                                 | ![sign_in_test](https://github.com/FabiMe/Django-blog/assets/136444209/c86fa88a-e7ea-4da0-b859-d733871aabb3)
-![sign_in_success](https://github.com/FabiMe/Django-blog/assets/136444209/1783bdb1-3b46-48a2-a5ed-b0090c72a9b6)                    |
-| User Authentication    | Log out                | Log out                                                 | User logged out and redirected to home page                    | Tested by logging out                                        | The feature acted normally and logged out the user   | None                                                 | ![logout_test](https://github.com/FabiMe/Django-blog/assets/136444209/22a917a2-96d6-4eba-a42a-872f931c5c5b)
-![logout_warning](https://github.com/FabiMe/Django-blog/assets/136444209/a3dfef3f-c395-4b10-95fe-c0229a2f2c28)
-![logout_success](https://github.com/FabiMe/Django-blog/assets/136444209/d1d04e65-3248-429d-beaf-b4959e964197)                    |
-| User Content           | Create Blog Post       | Create a new blog post                                  | New post is created and displayed in the blog overview         | Tested by creating a new blog post                           | The feature acted normally and created the new post  | None                                                 | ![create_blog_post_test](https://github.com/FabiMe/Django-blog/assets/136444209/d553e380-1da4-4690-95d3-6fc05ed1f84b)
-![create_blog_post_test2](https://github.com/FabiMe/Django-blog/assets/136444209/aba2e2ce-0621-42c0-98ce-69484dd73598)
-![blog_post_success](https://github.com/FabiMe/Django-blog/assets/136444209/49408c9f-cb75-4fca-acba-595875515ec7)                    |
-| User Content           | Edit Blog Post         | Edit an existing blog post                              | Updated post content displayed correctly                       | Tested by editing an existing blog post                      | The feature acted normally and updated the post      | None                                                 | ![edit_blog_post](https://github.com/FabiMe/Django-blog/assets/136444209/9ce3af22-cb11-4930-bd29-2b3199968908)                    |
-| User Content           | Delete Blog Post       | Delete an existing blog post                            | Post is removed from the blog overview                         | Tested by deleting an existing blog post                     | The feature acted normally and removed the post      | None                                                 | ![delete_blog_post_test](https://github.com/FabiMe/Django-blog/assets/136444209/a6ec9576-ed57-4b6e-9ad0-ad1b8e868eb3)
-![post_delete_success](https://github.com/FabiMe/Django-blog/assets/136444209/860f3a6f-a5ae-4119-89e5-742e875d53db)                    |
-| Commenting System      | Post Comment           | Post a comment on a blog post                           | Comment appears below the post                                 | Tested by posting a comment on a blog post                   | The feature acted normally and displayed the comment | None                                                 | ![comment_test](https://github.com/FabiMe/Django-blog/assets/136444209/1f8c052c-85cc-4461-a145-4a11f3b93c3a)
-![comment_success](https://github.com/FabiMe/Django-blog/assets/136444209/a3d084ae-877a-4c1f-9726-c29f15d2e3d7)                    |
-| Commenting System      | Edit Comment           | Edit an existing comment                                | Edited comment updated below the post                          | Tested by editing a comment                                  | The feature acted normally and updated the comment   | None                                                 | ![edit_comment_test](https://github.com/FabiMe/Django-blog/assets/136444209/e881a317-b86e-40a9-8a04-775cbc6999ed)
-![edit_comment_test2](https://github.com/FabiMe/Django-blog/assets/136444209/c60f9b3e-71fb-4155-a6b9-21e80f5c83c6)
-![edit_comment_success](https://github.com/FabiMe/Django-blog/assets/136444209/6a64e807-c38d-42d9-b162-e5570f6bb0e8)                    |
-| Commenting System      | Delete Comment         | Delete a comment                                        | Comment removed from the post                                  | Tested by deleting a comment                                 | The feature acted normally and removed the comment   | None                                                 | ![comment_delete](https://github.com/FabiMe/Django-blog/assets/136444209/c1904420-638e-4095-a4ea-c886a8ba7b9b)
-![comment_delete2](https://github.com/FabiMe/Django-blog/assets/136444209/7d75d54f-4fa1-4650-ba41-4b5c53bdb1d1)
-![comment_delete_success](https://github.com/FabiMe/Django-blog/assets/136444209/d158bbc0-7261-41b5-be3e-ad63c30f3582)                    |
-| Map View Integration   | View Map               | View the map on the blog post detail page               | Map displays with a marker at the post's location              | Tested by viewing the map on a blog post detail page         | The feature acted normally and displayed the map     | None                                                 | !![map_blog](https://github.com/FabiMe/Django-blog/assets/136444209/1ce18327-bdf2-49ba-86f8-255d2f0e9c3d)                    |
-| Map View Integration   | Click Marker           | Click on a marker on the map                            | Popup with post title and link to detailed view                | Tested by clicking on a marker on the map                    | The feature acted normally and displayed the popup   | None                                                 | ![map_overview](https://github.com/FabiMe/Django-blog/assets/136444209/820f466b-c82c-4388-a6c2-4bf334893c76)
-![map_click_on_marker](https://github.com/FabiMe/Django-blog/assets/136444209/ac63fe6a-e934-40be-b3ec-eb2f9cfa3781)
-                    |
-| Map View Integration   | Map Overview           | Navigate to the map overview                            | Map displays all post locations with markers                   | Tested by navigating to the map overview                     | The feature acted normally and displayed the map     | None                                                 | ![map_overview_navigation](https://github.com/FabiMe/Django-blog/assets/136444209/6a7621d7-b4f6-48c7-9129-3ac1f7b97537)                    |
-| Responsive Design      | Mobile View            | View the site on mobile                                 | Layout adjusts to fit screen size without breaking             | Tested by viewing the site on a mobile device                | The feature acted normally and adjusted the layout   | None                                                 | ![mobile_view](https://github.com/FabiMe/Django-blog/assets/136444209/1c2938a1-1968-4b1d-b9e7-06183cd05c27)                    |
-| Responsive Design      | Tablet View            | View the site on tablet                                 | Layout adjusts to fit screen size without breaking             | Tested by viewing the site on a tablet                       | The feature acted normally and adjusted the layout   | None                                                 | ![tablet_view](https://github.com/FabiMe/Django-blog/assets/136444209/84bed69e-7de5-4920-9589-a9318afaa550)                    |
+| Blog Post              | Blog Post Listing      | Navigate to the blog overview page                      | List of blog posts displayed with title, excerpt, author, date | Tested by navigating to the blog overview page               | The feature acted normally and displayed the list of blog posts | None                                                 | ![blog_navigation](https://github.com/FabiMe/Django-blog/assets/136444209/82033a60-96cb-4ec2-9f05-f966da96267c) |
+| Blog Post              | Detailed Blog View     | Click on a blog post title                              | Detailed view of the blog post with full content and comments   | Tested by clicking on a blog post title                      | The feature acted normally and displayed the detailed view of the blog post | None                                                 | ![navigate_post](https://github.com/FabiMe/Django-blog/assets/136444209/048e1ab6-03f7-4c2e-b0f4-4abaa1c92a5c) ![blog_detail_1](https://github.com/FabiMe/Django-blog/assets/136444209/e4fbe588-1b70-47cd-858b-082366f95bc5) |
+| User Authentication    | Sign up                | Sign  up, email is not mandatory                        | Account created and user logged in                             | Tested by signing up without a new email                     | The feature acted normally and created the account, logged in the user | None                                                 | ![signup_test](https://github.com/FabiMe/Django-blog/assets/136444209/4dc2d46e-fb3f-4d05-a089-12491f9d1dc5) ![signup_success](https://github.com/FabiMe/Django-blog/assets/136444209/b9949d3f-55cf-425d-848f-a5eb646768f4) |
+| User Authentication    | Log in                 | Log in with existing credentials                        | User logged in successfully                                    | Tested by logging in with existing credentials               | The feature acted normally and logged in the user    | None                                                 | ![sign_in_test](https://github.com/FabiMe/Django-blog/assets/136444209/c86fa88a-e7ea-4da0-b859-d733871aabb3) ![sign_in_success](https://github.com/FabiMe/Django-blog/assets/136444209/1783bdb1-3b46-48a2-a5ed-b0090c72a9b6) |
+| User Authentication    | Log out                | Log out                                                 | User logged out and redirected to home page                    | Tested by logging out                                        | The feature acted normally and logged out the user   | None                                                 | ![logout_test](https://github.com/FabiMe/Django-blog/assets/136444209/22a917a2-96d6-4eba-a42a-872f931c5c5b) ![logout_warning](https://github.com/FabiMe/Django-blog/assets/136444209/a3dfef3f-c395-4b10-95fe-c0229a2f2c28) ![logout_success](https://github.com/FabiMe/Django-blog/assets/136444209/d1d04e65-3248-429d-beaf-b4959e964197) |
+| User Content           | Create Blog Post       | Create a new blog post                                  | New post is created and displayed in the blog overview         | Tested by creating a new blog post                           | The feature acted normally and created the new post  | None                                                 | ![create_blog_post_test](https://github.com/FabiMe/Django-blog/assets/136444209/d553e380-1da4-4690-95d3-6fc05ed1f84b) ![create_blog_post_test2](https://github.com/FabiMe/Django-blog/assets/136444209/aba2e2ce-0621-42c0-98ce-69484dd73598) ![blog_post_success](https://github.com/FabiMe/Django-blog/assets/136444209/49408c9f-cb75-4fca-acba-595875515ec7) |
+| User Content           | Edit Blog Post         | Edit an existing blog post                              | Updated post content displayed correctly                       | Tested by editing an existing blog post                      | The feature acted normally and updated the post      | None                                                 | ![edit_blog_post](https://github.com/FabiMe/Django-blog/assets/136444209/9ce3af22-cb11-4930-bd29-2b3199968908) |
+| User Content           | Delete Blog Post       | Delete an existing blog post                            | Post is removed from the blog overview                         | Tested by deleting an existing blog post                     | The feature acted normally and removed the post      | None                                                 | ![delete_blog_post_test](https://github.com/FabiMe/Django-blog/assets/136444209/a6ec9576-ed57-4b6e-9ad0-ad1b8e868eb3) ![post_delete_success](https://github.com/FabiMe/Django-blog/assets/136444209/860f3a6f-a5ae-4119-89e5-742e875d53db) |
+| Commenting System      | Post Comment           | Post a comment on a blog post                           | Comment appears below the post                                 | Tested by posting a comment on a blog post                   | The feature acted normally and displayed the comment | None                                                 | ![comment_test](https://github.com/FabiMe/Django-blog/assets/136444209/1f8c052c-85cc-4461-a145-4a11f3b93c3a) ![comment_success](https://github.com/FabiMe/Django-blog/assets/136444209/a3d084ae-877a-4c1f-9726-c29f15d2e3d7) |
+| Commenting System      | Edit Comment           | Edit an existing comment                                | Edited comment updated below the post                          | Tested by editing a comment                                  | The feature acted normally and updated the comment   | None                                                 | ![edit_comment_test](https://github.com/FabiMe/Django-blog/assets/136444209/e881a317-b86e-40a9-8a04-775cbc6999ed) ![edit_comment_test2](https://github.com/FabiMe/Django-blog/assets/136444209/c60f9b3e-71fb-4155-a6b9-21e80f5c83c6) ![edit_comment_success](https://github.com/FabiMe/Django-blog/assets/136444209/6a64e807-c38d-42d9-b162-e5570f6bb0e8) |
+| Commenting System      | Delete Comment         | Delete a comment                                        | Comment removed from the post                                  | Tested by deleting a comment                                 | The feature acted normally and removed the comment   | None                                                 | ![comment_delete](https://github.com/FabiMe/Django-blog/assets/136444209/c1904420-638e-4095-a4ea-c886a8ba7b9b) ![comment_delete2](https://github.com/FabiMe/Django-blog/assets/136444209/7d75d54f-4fa1-4650-ba41-4b5c53bdb1d1) ![comment_delete_success](https://github.com/FabiMe/Django-blog/assets/136444209/d158bbc0-7261-41b5-be3e-ad63c30f3582) |
+| Map View Integration   | View Map               | View the map on the blog post detail page               | Map displays with a marker at the post's location              | Tested by viewing the map on a blog post detail page         | The feature acted normally and displayed the map     | None                                                 | ![map_blog](https://github.com/FabiMe/Django-blog/assets/136444209/1ce18327-bdf2-49ba-86f8-255d2f0e9c3d) |
+| Map View Integration   | Click Marker           | Click on a marker on the map                            | Popup with post title and link to detailed view                | Tested by clicking on a marker on the map                    | The feature acted normally and displayed the popup   | None                                                 | ![map_overview](https://github.com/FabiMe/Django-blog/assets/136444209/820f466b-c82c-4388-a6c2-4bf334893c76) ![map_click_on_marker](https://github.com/FabiMe/Django-blog/assets/136444209/ac63fe6a-e934-40be-b3ec-eb2f9cfa3781) |
+| Map View Integration   | Map Overview           | Navigate to the map overview                            | Map displays all post locations with markers                   | Tested by navigating to the map overview                     | The feature acted normally and displayed the map     | None                                                 | ![map_overview_navigation](https://github.com/FabiMe/Django-blog/assets/136444209/6a7621d7-b4f6-48c7-9129-3ac1f7b97537) |
+| Responsive Design      | Mobile View            | View the site on mobile                                 | Layout adjusts to fit screen size without breaking             | Tested by viewing the site on a mobile device                | The feature acted normally and adjusted the layout   | None                                                 | ![mobile_view](https://github.com/FabiMe/Django-blog/assets/136444209/1c2938a1-1968-4b1d-b9e7-06183cd05c27) |
+| Responsive Design      | Tablet View            | View the site on tablet                                 | Layout adjusts to fit screen size without breaking             | Tested by viewing the site on a tablet                       | The feature acted normally and adjusted the layout   | None                                                 | ![tablet_view](https://github.com/FabiMe/Django-blog/assets/136444209/84bed69e-7de5-4920-9589-a9318afaa550) |
 
-### Deployment
+## Deployment
 
-#### Development Environment Setup
-
+### Development Environment Setup
 To set up the development environment, follow these steps:
 
 1. **Clone the repository:**
@@ -324,8 +316,7 @@ To set up the development environment, follow these steps:
     python manage.py migrate
     ```
 
-#### Deployment to Production
-
+### Deployment to Production
 The application is deployed to Heroku. Follow these steps to deploy:
 
 1. **Login to Heroku:**
@@ -346,18 +337,18 @@ The application is deployed to Heroku. Follow these steps to deploy:
     git push heroku main
     ```
 
-### Source Credits
+## Source Credits
 
-#### References/Documentation/Tutorials
-
+### References/Documentation/Tutorials
 - Django documentation: https://docs.djangoproject.com/
 - Leaflet.js documentation: https://leafletjs.com/
 - Bootstrap documentation: https://getbootstrap.com/
 
-#### Media and Styling Credits
-
+### Media and Styling Credits
 - Background images and icons from Cloudinary.
 - Fonts from Google Fonts.
-
-
-https://www.pexels.com/photo/mayan-ruins-in-jungle-18360201/
+- [Ancient city post picture](https://www.pexels.com/photo/mayan-ruins-in-jungle-18360201/)
+- [Pripyat post picture](https://www.pexels.com/photo/man-jumping-on-brown-metal-fence-towards-two-yellow-bump-cars-1411444/)
+- Sculpture park - AI generated 
+- [Illegal freedom](https://www.pexels.com/photo/abandoned-vandalized-swimming-pool-17506281/)
+- [Background image](https://pixabay.com/photos/skating-disaster-factory-leave-3995560/)
